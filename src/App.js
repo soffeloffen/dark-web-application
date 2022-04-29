@@ -1,3 +1,5 @@
+import {useState, useEffect} from 'react'
+
 function App() {
   return (
     <div className="Container">
@@ -5,5 +7,16 @@ function App() {
     </div>
   );
 }
+
+//useEffect to fetch json data
+useEffect(() => {
+  const fetchProducts = async () => {
+    const res = await fetch('http://localhost:5000/products/')
+    const data = await res.json()
+
+    console.log(data)
+  }
+  fetchProducts()
+}, [])
 
 export default App;
