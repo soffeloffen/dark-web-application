@@ -1,6 +1,16 @@
-import {useState, useEffect} from 'react'
+//import {useState, useEffect} from 'react'
+import ProductInfo from './components/ProductInfo'
+import ButtonAddToBasket from './components/ButtonAddToBasket'
+
 
 const App = () => {
+return(
+    <div className='container'>
+    <ProductInfo />
+    <ButtonAddToBasket />
+
+    </div>
+)
 
 /*
   useEffect(() => {
