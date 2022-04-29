@@ -1,10 +1,9 @@
-import ButtonAddToBasket from './ButtonAddToBasket.js'
-import ButtonRemoveFromBasket from './ButtonRemoveFromBasket.js'
+import ButtonAddToBasket from './ButtonAddToBasket'
+import ButtonRemoveFromBasket from './ButtonRemoveFromBasket'
 
     
  const Product = ({ product }) => {
     <div className='product'>
-        <p>{product.title}</p>   
     <ButtonAddToBasket productid = { product.id } />  <ButtonRemoveFromBasket productid = { product.id } />
     </div>
 }
