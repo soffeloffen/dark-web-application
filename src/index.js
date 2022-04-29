@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-//import {useState, useEffect} from 'react'
-import ProductCard from './components/ProductCard';
+import {useState, useEffect} from 'react'
+import ProductCard from './components/ProductInfo';
 import ButtonAddToBasket from './components/ButtonAddToBasket';
 
 
@@ -14,7 +14,7 @@ root.render(
   <React.StrictMode>
     <App />
     <h1>hey</h1>
-    <ProductCard />
+    <ProductInfo />
     <ButtonAddToBasket />
   </React.StrictMode>
 );

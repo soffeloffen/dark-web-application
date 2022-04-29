@@ -1,7 +1,22 @@
-function App() {
-  return (
-    <h1>Hej</h1>
-  );
-}
+import {useState, useEffect} from 'react'
 
-export default App;
+const App = () => {
+
+/*
+  useEffect(() => {
+    const getTasks = async() =>{
+        const productsFromServer = await fetchProducts()
+        setProducts(productsFromServer)
+    }
+
+    getProducts()
+  }, [])
+
+  const fetchProducts = async () => {
+    const res = await fetch('http://localhost:3000/products/')
+    const data = await res.json()
+
+return data
+}*/
+}
+export default App
