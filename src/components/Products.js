@@ -4,10 +4,8 @@ import Product from './Product'
     return(
     <>
     {products.map((product) => (
-        <Product 
-        key={product.id}
-        product={product}
-        />
+        <h3 key={product.id}>{product.title + ": "+ product.shortdescription}</h3>
+        //<Product key={product.id} product={product} />
     ))}
     </>
     )
