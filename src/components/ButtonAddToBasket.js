@@ -1,4 +1,3 @@
-import PropTypes from 'proptypes'
 
 
  const ButtonAddToBasket = () => {
