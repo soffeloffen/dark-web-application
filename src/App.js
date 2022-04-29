@@ -2,7 +2,6 @@ import Navbar from './components/Navbar/Navbar';
 import { useState, useEffect } from 'react'
 import Products from './components/Products.js'
 import './App.css'
-import React, { useState } from 'react';
 
 
 const App = () => {
