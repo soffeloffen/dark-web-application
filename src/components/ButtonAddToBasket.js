@@ -1,13 +1,14 @@
 
 
- const ButtonAddToBasket = () => {
+ const ButtonAddToBasket = ({ productid }) => {
 
-    const onClick=()=>{
-        console.log('click')
+    const onAddToBasket=()=>{
+        //logs the id of product where 'add to basket' is clicked
+        console.log("ADDED TO BASKET product id: " + productid)
     }
 
     return (
-       <button onClick={onClick} style={{backgroundColor: "green"}}
+       <button onClick={onAddToBasket} style={{backgroundColor: "green"}}
        className='btn'> 
         Add To Basket
        </button>
