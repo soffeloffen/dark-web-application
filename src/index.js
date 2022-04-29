@@ -4,18 +4,16 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-//import {useState, useEffect} from 'react'
-import ProductCard from './components/ProductCard';
+import {useState, useEffect} from 'react'
 import ButtonAddToBasket from './components/ButtonAddToBasket';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <h1>hey from index.js</h1>
     <App />
-    <h1>hey</h1>
-    <ProductCard />
-    <ButtonAddToBasket />
+
   </React.StrictMode>
 );
 
