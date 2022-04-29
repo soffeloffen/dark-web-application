@@ -6,6 +6,41 @@ const App = () => {
     const [products, setProducts] = useState([])
 
     useEffect(() => {
+        const getProducts = async () => {
+            const productsFromServer = await fetchProducts()
+
+        }
+
+        getProducts()
+    }, [])
+
+    //fetch products
+    const fetchProducts = async () => {
+        const res = await fetch('http://localhost:3000/products')
+        const data = await res.json()
+        console.log(data)
+        return data
+    }
+         
+return(
+    <div className='container'>
+    <Products products =  { products } />
+    <h2> hey from app.js</h2>
+    </div>
+    )
+
+}
+
+export default App
+
+/* import { useState, useEffect } from 'react'
+import Products from './components/Products'
+
+
+const App = () => {
+    const [products, setProducts] = useState([])
+
+    useEffect(() => {
         const fetchProducts = async () => {
             const res = await fetch('http://localhost:3000/products')
             const data = await res.json()
@@ -14,7 +49,7 @@ const App = () => {
         }
 
         fetchProducts()
-    })
+    }, [])
          
 return(
     <div className='container'>
@@ -27,7 +62,7 @@ return(
 
 export default App
 
-/* {
+ {
             amount: 0,
             id: '1',
             type: 'Drug',

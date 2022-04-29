@@ -1,7 +1,20 @@
-import Product from './Product'
+import Product from './Product.js'
 
  const Products = ({ products }) => {
-      <Product product = { products } />
+
+    return (
+<>      <h4> hey from Products.js { products.id }  </h4>
+
+
+    {products.map((product) => (
+      <Product 
+      key = {product.id}
+      product = {product}
+      producttitle = {product.title} 
+      />
+    ))}
+     </>
+    )
 }
 
 export default Products
