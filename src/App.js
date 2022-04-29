@@ -26,7 +26,6 @@ return(
     <div className="App">
     <Navbar />
     <Products products = { products } />
-    <li>{products}</li>
     <h2> hey from app.js</h2>
     </div>
     )

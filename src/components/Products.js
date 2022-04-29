@@ -1,4 +1,4 @@
-import Product from './Product.js'
+import Product from './Product'
 
  const Products = ({ products }) => {
 
@@ -6,8 +6,7 @@ import Product from './Product.js'
 <>     
 {products.map((product) => (
     <Product
-        
-       // title={product.title}
+        product={product}
       />
     ))}
      </>

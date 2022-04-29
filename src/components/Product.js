@@ -9,8 +9,9 @@ import ButtonRemoveFromBasket from './ButtonRemoveFromBasket.js'
 
     return (
         <div>
-        <h4> hey from Product.js</h4>
-        <h1>{product.key}</h1>
+            <p>{product.title}</p>
+        <ButtonAddToBasket productid = { product.id } />  <ButtonRemoveFromBasket productid = { product.id } />
+
         </div>
 
     )
