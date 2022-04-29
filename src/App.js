@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import Products from './components/Products'
+import Products from './components/Products.js'
 
 
 const App = () => {
@@ -8,9 +8,7 @@ const App = () => {
     useEffect(() => {
         const getProducts = async () => {
             const productsFromServer = await fetchProducts()
-
         }
-
         getProducts()
     }, [])
 
@@ -23,8 +21,9 @@ const App = () => {
     }
          
 return(
-    <div className='container'>
-    <Products products =  { products } />
+    <div className="App">
+    <Products products = { products } />
+    <li>{products}</li>
     <h2> hey from app.js</h2>
     </div>
     )

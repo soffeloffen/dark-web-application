@@ -16,3 +16,6 @@
 }
 
 export default ButtonRemoveFromBasket
+
+//Buttons to put for each product. But Product doesn't work right now
+//<ButtonAddToBasket productid = { product.id } />  <ButtonRemoveFromBasket productid = { product.id } />
