@@ -1,6 +1,12 @@
+import Navbar from './components/Navbar/Navbar';
+import './App.css'
+
 function App() {
   return (
-    <h1>Hej</h1>
+    <div>
+      <>
+      <Navbar /></>
+    </div>
   );
 }
 
