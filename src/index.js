@@ -11,7 +11,6 @@ import ButtonAddToBasket from './components/ButtonAddToBasket';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <h1>hey from index.js</h1>
     <App />
 
   </React.StrictMode>
