@@ -28,7 +28,8 @@ const App = () => {
     <div className="App">
       <Router>
         <Navbar />
-        <Products products={products} />
+        
+        {/* <Products products={products} /> */}
         
         <Routes>
             <Route path="/" element="" ></Route>

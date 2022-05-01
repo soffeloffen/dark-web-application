@@ -1,0 +1,13 @@
+.LoginForm {
+  margin-top: 80px;  
+  padding: 7px;
+  font-size: 2rem;
+  box-sizing: border-box;
+  resize: horizontal;
+}
+
+.labels {
+    margin-top: 30px;
+    font-size: 1.5rem;
+    padding: 10px;
+}
