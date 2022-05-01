@@ -11,11 +11,12 @@ const LoginForm = () => {
 
   return (
     <div>LoginForm
-        <form onSubmit={handleSubmit(onSubmit)}>
+      <h1>HEJSA</h1>
+        {/* <form onSubmit={handleSubmit(onSubmit)}>
             <input type='text' placeholder='Email' name='User Name' ref={register}></input>
             <input type='text' placeholder='Password' name='Password' ref={register}></input>
             <input type='submit'></input>
-        </form>
+        </form> */}
     </div>
   )
 }

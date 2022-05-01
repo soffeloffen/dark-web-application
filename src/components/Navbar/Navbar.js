@@ -2,6 +2,7 @@ import React from "react";
 import { MenuItems } from "./MenuItems";
 import "./Navbar.css";
 import LoginForm from "../LoginForm";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 class Navbar extends React.Component {
   state = { clicked: "0" };
@@ -13,10 +14,10 @@ class Navbar extends React.Component {
 
     switch (this.state.clicked) {
       case "1":
-      console.log("hej")
+        console.log("hej");
       case "2":
-      <h1>HEJSA</h1>
-      console.log(this.state)
+        <h1>HEJSA</h1>;
+        console.log(this.state);
       case "3":
       // render the form for paypal payment
       case "4":
@@ -34,16 +35,17 @@ class Navbar extends React.Component {
         <ul className="nav-menu">
           {MenuItems.map((item, index) => {
             return (
-              <li
-                key={index}
-                id={item.id}
-                onClick={() => this.handleClick(item.id)}
-              >
-                <a className={item.cName}>{item.title}</a>
-              </li>
+              <Link to={item.url}>
+                <li
+                  key={index}
+                  id={item.id}
+                  onClick={() => this.handleClick(item.id)}
+                >
+                  <a className={item.cName}>{item.title}</a>
+                </li>
+              </Link>
             );
           })}
-          {/* <li> currentState = {this.state.clicked} </li> */}
         </ul>
       </nav>
     );

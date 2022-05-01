@@ -1,39 +1,47 @@
-import Navbar from './components/Navbar/Navbar';
-import { useState, useEffect } from 'react'
-import Products from './components/Products.js'
-import './App.css'
-
+import Navbar from "./components/Navbar/Navbar";
+import { useState, useEffect } from "react";
+import Products from "./components/Products.js";
+import "./App.css";
+// import { Router } from "express";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import LoginForm from "./components/LoginForm";
 
 const App = () => {
-    const [products, setProducts] = useState([])
+  const [products, setProducts] = useState([]);
 
-    useEffect(() => {
-        const getProducts = async () => {
-            const productsFromServer = await fetchProducts()
-        }
-        getProducts()
-    }, [])
+  useEffect(() => {
+    const getProducts = async () => {
+      const productsFromServer = await fetchProducts();
+    };
+    getProducts();
+  }, []);
 
-    //fetch products
-    const fetchProducts = async () => {
-        const res = await fetch('http://localhost:3000/products')
-        const data = await res.json()
-        console.log(data)
-        return data
-    }
-         
-return(
+  //fetch products
+  const fetchProducts = async () => {
+    const res = await fetch("http://localhost:3000/products");
+    const data = await res.json();
+    console.log(data);
+    return data;
+  };
+
+  return (
     <div className="App">
-    <Navbar />
-    <Products products = { products } />
-    <li>{products}</li>
-    <h2> hey from app.js</h2>
+      <Router>
+        <Navbar />
+        <Products products={products} />
+        
+        <Routes>
+            <Route path="/" element="" ></Route>
+            <Route path="/" element="" ></Route>
+            <Route path="/" element="" ></Route>
+            <Route path="/SignIn" element={<LoginForm/>} ></Route>
+        </Routes>
+      </Router>
     </div>
-    )
+  )
+};
 
-}
-
-export default App
+export default App;
 
 /* import { useState, useEffect } from 'react'
 import Products from './components/Products'
