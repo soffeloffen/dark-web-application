@@ -1,18 +1,16 @@
 import ButtonAddToBasket from './ButtonAddToBasket.js'
 import ButtonRemoveFromBasket from './ButtonRemoveFromBasket.js'
-
     
  const Product = ({ product }) => {
-  /*  const showProduct=() => {
-        console.log(product.id)
-    }*/
 
+//for each product, show title and short description
     return (
-        <div>
-        <h4> hey from Product.js</h4>
-        <h1>{product.key}</h1>
+        <div className='product'>
+        <h4> {product.title}</h4>
+        <img src={product.image} className='cat'></img>
+        <p className='p'> {product.shortdescription}  </p>
+        <ButtonAddToBasket productid = { product.id } />  <ButtonRemoveFromBasket productid = { product.id } />
         </div>
-
     )
 }
 

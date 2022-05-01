@@ -1,7 +1,7 @@
 //export PORT=8000
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './product.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {useState, useEffect} from 'react'
