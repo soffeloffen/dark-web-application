@@ -1,37 +1,53 @@
 import React from "react";
 import { MenuItems } from "./MenuItems";
 import "./Navbar.css";
+import LoginForm from "../LoginForm";
 
 class Navbar extends React.Component {
+  state = { clicked: "0" };
 
-  handleClick(){
-    
+  handleClick(id) {
+    this.setState({
+      clicked: id,
+    });
+
+    switch (this.state.clicked) {
+      case "1":
+      console.log("hej")
+      case "2":
+      <h1>HEJSA</h1>
+      console.log(this.state)
+      case "3":
+      // render the form for paypal payment
+      case "4":
+      // render the form for paypal payment
+
+      default:
+        return null;
+    }
   }
-  
 
-  state = { clicked: false };
-
-   render() {
+  render() {
     return (
       <nav className="NavbarItems">
-          <h1 className="Navbarlogo">Dark Web</h1>
-        <div>
-        </div>
-        <ul className={this.state.clicked ? 'nav-menubar-active' : 'nav-menu'}>
+        <h1 className="Navbarlogo">Dark Web</h1>
+        <ul className="nav-menu">
           {MenuItems.map((item, index) => {
             return (
-              <li key={index} id = {item.id}>
-                <a className={item.cName}>
-                  {item.title}
-                </a>
+              <li
+                key={index}
+                id={item.id}
+                onClick={() => this.handleClick(item.id)}
+              >
+                <a className={item.cName}>{item.title}</a>
               </li>
             );
           })}
+          {/* <li> currentState = {this.state.clicked} </li> */}
         </ul>
       </nav>
     );
   }
 }
 
-export default Navbar
- 
+export default Navbar;
