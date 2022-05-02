@@ -1,20 +1,67 @@
-import React from 'react'
-import { useForm } from "react-hook-form"
-import "./LoginForm.css"
+import React from "react";
+import "./LoginForm.css";
+import axios from "axios";
 
-const LoginForm = () => {
+class LoginForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      Username: null,
+      Password: null
+    };
+    this.handleUsernameChange = this.handleUsernameChange.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+  }
 
-  
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const data = this.state
+    console.log(data)
+    axios.post("http://localhost:3000/customers", data)
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  };
 
-  return (
-    <div className='LoginForm'> LoginForm
-        <form className='labels'>
-            <input type='text' placeholder='Email' name='User Name' className='labels' id='username'></input>
-            <input type='text' placeholder='Password' name='Password' className='labels' id='password' ></input>
-            <input type='submit' className='labels'></input>
+  handleUsernameChange(event) {
+    this.setState({ Username: event.target.value });
+  }
+
+  handlePasswordChange(event) {
+    this.setState({ Password: event.target.value });
+  }
+
+  render() {
+    const { Username, Password } = this.state;
+    return (
+      <div className="LoginForm">
+        {" "}
+        LoginForm
+        <form className="labels" onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            required
+            placeholder="Email"
+            name="Username"
+            className="labels"
+            onChange={this.handleUsernameChange}
+          ></input>
+          <input
+            type="text"
+            required
+            placeholder="Password"
+            name="Password"
+            className="labels"
+            onChange={this.handlePasswordChange}
+          ></input>
+          <input type="submit" className="labels"></input>
         </form>
-    </div>
-  )
+      </div>
+    );
+  }
 }
 
-export default LoginForm
+export default LoginForm;
