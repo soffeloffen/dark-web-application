@@ -3,10 +3,12 @@ import { useState, useEffect } from 'react'
 import Products from './components/Products.js'
 import './App.css'
 import './product.css'
-
+// import { Router } from "express";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import LoginForm from "./components/LoginForm";
 
 const App = () => {
-    const [products, setProducts] = useState([])
+  const [products, setProducts] = useState([]);
 
     useEffect(() => {
         const getProducts = async () => {
@@ -24,13 +26,24 @@ const App = () => {
         return data.products
     }
           
-return(
+  return (
     <div className="App">
-    <Navbar />
-    <Products products = { products } />
-    </div>
-    )
+      <Router>
+        <Navbar />
+        <Products products = { products } />
 
-}
+        {/* <Products products={products} /> */}
+        
+        <Routes>
+            <Route path="/" element="" ></Route>
+            <Route path="/" element="" ></Route>
+            <Route path="/" element="" ></Route>
+            <Route path="/SignIn" element={<LoginForm/>} ></Route>
+        </Routes>
+      </Router>
+    </div>
+  )
+};
+
 export default App
 
