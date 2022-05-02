@@ -30,14 +30,10 @@ const App = () => {
     <div className="App">
       <Router>
         <Navbar />
-        <Products products = { products } />
-
-        {/* <Products products={products} /> */}
-        
         <Routes>
             <Route path="/" element="" ></Route>
             <Route path="/" element="" ></Route>
-            <Route path="/" element="" ></Route>
+            <Route path="/Products" element={<Products products = { products } />} ></Route>
             <Route path="/SignIn" element={<LoginForm/>} ></Route>
         </Routes>
       </Router>
