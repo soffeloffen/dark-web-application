@@ -4,11 +4,12 @@ import Product from './Product'
 //return to Product.js
  const Products = ({ products }) => {
     return (
+    
     <>     
         {
             products.map((product) => (      
             <Product 
-                key={product.id} product ={product}
+                key={product.id} product ={product} 
              />
          ))}
      </>
