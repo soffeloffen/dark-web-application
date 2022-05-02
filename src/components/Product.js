@@ -7,8 +7,8 @@ import ButtonRemoveFromBasket from './ButtonRemoveFromBasket.js'
     return (
         <div className='product'>
         <h4> {product.title}</h4>
-        <img src={product.image} className='cat'></img>
-        <p className='p'> {product.shortdescription}  </p>
+        <img src={product.image} className='cat' ></img>
+        <p > {product.shortdescription}  </p>
         <ButtonAddToBasket productid = { product.id } />  <ButtonRemoveFromBasket productid = { product.id } />
         </div>
     )

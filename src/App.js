@@ -21,10 +21,9 @@ const App = () => {
         const res = await fetch('http://localhost:3000/products')
         const data = await res.json()
         console.log(data)
-
         return data.products
     }
-         
+          
 return(
     <div className="App">
     <Navbar />
@@ -33,5 +32,5 @@ return(
     )
 
 }
-
 export default App
+
