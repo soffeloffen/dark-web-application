@@ -1,11 +1,14 @@
 import ButtonAddToBasket from './ButtonAddToBasket.js'
 import ButtonRemoveFromBasket from './ButtonRemoveFromBasket.js'
-    
- const Product = ({ product }) => {
+import Slider from 'react-styled-carousel';
+import ReactDOM from 'react-dom'
 
-//Create the ProductDiv with all relevant data to show
-const ProdDiv =   
-    <div className='product'>
+const title =     <h1> j</h1>
+ const ProductOnSale = ({ product }) => {
+
+
+ const ProdOnSaleDiv =   
+    <div className='product'> 
        <h4> {product.title}</h4>
        <div class="img__wrap">
        <img class="img__img" src={product.image} className='cat' ></img>
@@ -14,14 +17,14 @@ const ProdDiv =
            <br></br>
            Click here to get more infomation about this product.</p>
        </div>
-    <ButtonAddToBasket productid = { product.id } />  <ButtonRemoveFromBasket productid = { product.id } />
     </div>
 
     return (
-        <div className='container'>
-         {ProdDiv}
+        <div className='container'> 
+        <b>{product.onsale==true ?  ProdOnSaleDiv  : ""}</b>
         </div>
     )
 }
 
-export default Product
+
+export default ProductOnSale

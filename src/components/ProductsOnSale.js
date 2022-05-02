@@ -1,0 +1,21 @@
+import ProductOnSale from './ProductOnSale'
+
+//take the products array from App.js and convert to lsit of products
+//return to Product.js
+ const ProductsOnSale = ({ products }) => {
+    return (
+    
+    <>     
+        {
+            products.map((product) => (  
+              
+            <ProductOnSale   
+                key={product.id} product ={product} 
+             />
+         ))}
+     </>
+    )
+
+}
+
+export default ProductsOnSale
