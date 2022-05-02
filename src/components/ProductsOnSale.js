@@ -1,4 +1,5 @@
 import ProductOnSale from './ProductOnSale'
+import ProductInfo from './ProductInfo'
 
 //take the products array from App.js and convert to lsit of products
 //return to Product.js
