@@ -13,12 +13,11 @@ const [testOne, setTestOne] = useState(false);
     <>     
         {
             products.map((product) => (  
-              
             <ProductOnSale   
-                key={product.id} product ={product} testOne = {testOne}
-             />
+                key={product.id} product ={product} testOne = {testOne}/>
          ))}
      </>
+     
     )
 
 }

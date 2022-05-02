@@ -38,7 +38,7 @@ const ProductInfo =
 </div> 
 
 return (
-    <div  className='container'>
+    <div className='container'>
     <b>{product.onsale==true && currentProdID==0 ?  ProdOnSaleDiv : product.id == currentProdID && currentProdID !=0 ? ProductInfo : "" }</b>     
     </div>
     )

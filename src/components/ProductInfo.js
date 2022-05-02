@@ -1,8 +1,10 @@
 
-const ProductInfo = ({products}) => {
+const ProductInfo = ({currentprodid, prodid}) => {
 
     return (
-       <div></div> 
+       <p>
+          from ProductInfo
+       </p>
     )
 }
 
