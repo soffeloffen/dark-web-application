@@ -11,6 +11,7 @@ import { UserContext } from "./components/UserContext";
 
 const App = () => {
   const [products, setProducts] = useState([]);
+  const [signedInUser, setSignedInUser] = useState("");
 
   useEffect(() => {
     const getProducts = async () => {
@@ -28,11 +29,13 @@ const App = () => {
     return data.products;
   };
 
+
+
   return (
     <div className="App">
       <Router>
         <Navbar />
-        <UserContext.Provider value={""}>
+        <UserContext.Provider value={{signedInUser, setSignedInUser}}>
           <Routes>
             <Route path="/" element=""></Route>
             <Route path="/Basket" element={<Basket />}></Route>

@@ -1,6 +1,9 @@
-import React from "react";
 import "./LoginForm.css";
 import axios from "axios";
+import { UserContext } from "./UserContext";
+// import { React } from "react";
+import React from 'react'
+import { useContext } from "react";
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -24,6 +27,10 @@ class LoginForm extends React.Component {
     });
   };
 
+  //LAV OM TIL FUNCTION I STEDET FOR KLASSE OF SÅ SÆT SIGNED IN USER TIL THIS.STATE.USERNAME --> TJEK OM DEN OPDATERER
+  //const {signedInUser, setSignedInUser} = useContext(UserContext);
+  //setSignedInUser(this.state.Username)
+
   handleSubmit = (event) => {
     event.preventDefault();
     const data = this.state;
@@ -33,6 +40,7 @@ class LoginForm extends React.Component {
       .then((response) => {
         console.log(response);
         if (response.status === 201) {
+          this.updateUsername();
           this.createBasket(response.data.id);
         }
       })
@@ -46,7 +54,7 @@ class LoginForm extends React.Component {
   }
 
   handlePasswordChange(event) {
-    this.setState({ Password: event.target.value });
+    this.setState({ Password: event.target.value });    
   }
 
   render() {
