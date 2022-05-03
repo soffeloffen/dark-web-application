@@ -28,13 +28,11 @@ const App = () => {
     return data.products;
   };
 
-  const value = useState(LoginForm.data);
-
   return (
     <div className="App">
       <Router>
         <Navbar />
-        <UserContext.Provider value={value}>
+        <UserContext.Provider value={""}>
           <Routes>
             <Route path="/" element=""></Route>
             <Route path="/Basket" element={<Basket />}></Route>
