@@ -1,12 +1,14 @@
-import Navbar from './components/Navbar/Navbar';
-import { useState, useEffect } from 'react'
-import Products from './components/Products.js'
+import Navbar from "./components/Navbar/Navbar";
+import { useState, useEffect, useMemo } from "react";
+import Products from "./components/Products.js";
 import ProductsOnSale from './components/ProductsOnSale.js'
-import './App.css'
-import './product.css'
+import Basket from "./components/Basket";
+import "./App.css";
+import "./product.css";
 // import { Router } from "express";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
+import { UserContext } from "./components/UserContext";
 
 const App = () => {
   const [products, setProducts, productsonsale] = useState([]);
@@ -34,17 +36,21 @@ const App = () => {
     <div className="App">
       <Router>
         <Navbar />
-        <Routes>
-            <Route path="/" element={<ProductsOnSale products = { products } /> } ></Route>
-            <Route path="/" element="" ></Route>
-            <Route path="/Products" element={<Products products = { products } />} ></Route>
-            <Route path="/SignIn" element={<LoginForm/>} ></Route>
-        </Routes>
+        <UserContext.Provider value={""}>
+          <Routes>
+            <Route path="/" element={<ProductsOnSale products = { products } />}></Route>
+            <Route path="/Basket" element={<Basket />}></Route>
+            <Route
+              path="/Products"
+              element={<Products products={products} />}
+            ></Route>
+            <Route path="/SignIn" element={<LoginForm />}></Route>
+          </Routes>
+        </UserContext.Provider>
       </Router>
 
     </div>
-  )
+  );
 };
 
-export default App
-
+export default App;
