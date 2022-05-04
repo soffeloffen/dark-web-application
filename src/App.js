@@ -3,6 +3,8 @@ import { useState, useEffect, useMemo } from "react";
 import Products from "./components/Products.js";
 import ProductsOnSale from './components/ProductsOnSale.js'
 import Basket from "./components/Basket";
+import ProductDetail from "./components/ProductDetail";
+
 import "./App.css";
 import "./product.css";
 // import { Router } from "express";
@@ -11,7 +13,7 @@ import LoginForm from "./components/LoginForm";
 import { UserContext } from "./components/UserContext";
 
 const App = () => {
-  const [products, setProducts, productsonsale] = useState([]);
+  const [products, setProducts] = useState([]);
 
 
   /*   GET ALL PRODUCTS    */
@@ -31,24 +33,30 @@ const App = () => {
         return data.products
     }
 
+
+
+
   
   return (
     <div className="App">
+ 
       <Router>
         <Navbar />
         <UserContext.Provider value={""}>
           <Routes>
-            <Route path="/" element={<ProductsOnSale products = { products } />}></Route>
+            <Route path="/" element={<ProductsOnSale products = { products }/> }>
+            </Route>
             <Route path="/Basket" element={<Basket />}></Route>
-            <Route
-              path="/Products"
-              element={<Products products={products} />}
-            ></Route>
+            <Route path="/Products" element={<Products allproducts={products} />}></Route>
             <Route path="/SignIn" element={<LoginForm />}></Route>
+            <Route path="/products/:productId" element={<ProductDetail allproducts={products}/>}></Route>
           </Routes>
         </UserContext.Provider>
       </Router>
 
+
+      
+    
     </div>
   );
 };
