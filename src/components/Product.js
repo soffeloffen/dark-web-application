@@ -4,6 +4,7 @@ import ProductInfo from './ProductInfo'
 import { useState } from 'react'
     
 
+
  const Product = ({ product }) => {
     const [currentProdID, setCurrentProdID] = useState(0);
     
@@ -21,14 +22,15 @@ const ProdDiv =
        <p className="img__description" onClick={() => setCurrentProdID(product.id)}>
            {product.shortdescription} <br></br>
            <br></br>
+           <ProductInfo product = {product}/>
            Click here to get more infomation about this product.</p>
        </div>
     <ButtonAddToBasket productid = { product.id } />  <ButtonRemoveFromBasket productid = { product.id } />
     </div>
 
     return (
+        
         <div className='container'>
-        <ProductInfo currentprodid = {currentProdID} prodid = {product.id}/>
          {ProdDiv}
         </div>
         

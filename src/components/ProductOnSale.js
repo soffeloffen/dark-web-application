@@ -4,10 +4,8 @@ import Slider from 'react-styled-carousel';
 import ReactDOM from 'react-dom'
 import { useState } from 'react'
 
-
 const ProductOnSale = ({ product }) => {
 const [currentProdID, setCurrentProdID] = useState(0);
-
 
 
  const ProdOnSaleDiv =  
@@ -22,8 +20,6 @@ const [currentProdID, setCurrentProdID] = useState(0);
            </p>
        </div> 
        </div> 
-
-
 
 
 const ProductInfo = 
@@ -46,22 +42,3 @@ return (
 }
 
 export default ProductOnSale
-
-
-/*
- const ProdOnSaleDiv =  
- 
-    <div className='product'> 
-       <h4> {product.title}</h4>
-       <div className="img__wrap">
-       <img className="image" src={product.image} className='cat' />
-       <p className="img__description" onClick={() => setCurrentProdID(product.id) }>
-           {product.shortdescription} <br></br>
-           <br></br>
-           Click here to get more infomation about this product.
-           </p>
-       </div> 
-       </div> 
- 
-
-*/
