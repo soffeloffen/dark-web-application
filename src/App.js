@@ -1,10 +1,9 @@
 import Navbar from "./components/Navbar/Navbar";
 import { useState, useEffect, useMemo } from "react";
 import Products from "./components/Products.js";
-import ProductsOnSale from './components/ProductsOnSale.js'
+import HomePage from './components/HomePage.js'
 import Basket from "./components/Basket";
 import ProductDetail from "./components/ProductDetail";
-
 import "./App.css";
 import "./product.css";
 // import { Router } from "express";
@@ -46,10 +45,9 @@ const App = () => {
         <Navbar />
         <UserContext.Provider value={{signedInUser, setSignedInUser}}>
           <Routes>
-            <Route path="/" element={""}>
-            </Route>
+            <Route path="/" element={<HomePage allproducts={products} />}></Route>
             <Route path="/Basket" element={<Basket />}></Route>
-            <Route path="/Products" element={<Products allproducts={products} />}></Route>
+            <Route path="/products" element={<Products allproducts={products} />}></Route>
             <Route path="/SignIn" element={<LoginForm2 />}></Route>
             <Route path="/products/:productId" element={<ProductDetail allproducts={products}/>}></Route>
           </Routes>

@@ -1,10 +1,9 @@
 
-
- const ButtonAddToBasket = ({ productid }) => {
+ const ButtonAddToBasket = ({prodid}) => {
 
     const onAddToBasket=()=>{
         //logs the id of product where 'add to basket' is clicked
-        console.log("ADDED TO BASKET product id: " + productid)
+        console.log("ADDED TO BASKET product id: " + prodid)
     }
 
     return (

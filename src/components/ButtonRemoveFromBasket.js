@@ -1,10 +1,10 @@
 
 
- const ButtonRemoveFromBasket = ({ productid }) => {
+ const ButtonRemoveFromBasket = ({prodid}) => {
 
     const onRemoveFromBasket=()=>{
         //logs the id of product where 'removed from basket' is clicked
-        console.log("REMOVE FROM BASKET product id: " + productid)
+        console.log("REMOVE FROM BASKET product id: " + prodid)
     }
 
     return (
