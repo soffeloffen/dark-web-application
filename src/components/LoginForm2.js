@@ -12,6 +12,7 @@ export const LoginForm2 = () => {
   const {signedInUser, setSignedInUser} = useContext(UserContext);
 
   const createBasket = (customerId) => {
+      console.log(customerId)
     axios.post("http://localhost:3000/baskets", customerId).then((response) => {
       //Wait for the API to respond - statuscode should be 201 if everything went well
       if (response.status === 201) {
