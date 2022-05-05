@@ -35,12 +35,8 @@ const App = () => {
     }
 
 
-
-
-  
   return (
     <div className="App">
- 
       <Router>
         <Navbar />
         <UserContext.Provider value={{signedInUser, setSignedInUser}}>
