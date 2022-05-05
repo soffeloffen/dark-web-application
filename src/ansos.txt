@@ -124,3 +124,67 @@ const ProdDiv =
 export default Product
 
 
+
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+
+//take the products array from App.js and convert to lsit of products
+//return to Product.js
+const Products = ({ allproducts }) => {
+
+
+const products = allproducts.map((product) => {
+
+
+    return (
+        <div key={product.id}>
+          <div>
+          <Link to={`/products/${product.id}`}>{<img className="image" src={product.image} className='cat' />}</Link>
+          </div>
+          <h3>{product.title}</h3>
+        </div>
+  );
+});
+
+
+return (
+        <>
+        <h4>Filter by categories</h4><button>Drugs</button><button>Fake ID</button>
+          <h1>Products Page</h1>
+          {products}
+        </>
+      );
+};
+    
+export default Products
+
+
+/*
+const products = allproducts.map((product) => {
+        return (
+          <div key={product.id}>
+            <div>
+            <Link to={`/products/${product.id}`}>{<img className="image" src={product.image} className='cat' />}</Link>
+            </div>
+            <h3>{product.title}</h3>
+          </div>
+    );
+});
+
+
+const typeDrug =  <div className='container'>
+    <h3>{product.title}</h3>
+        <div>
+        <Link to={`/products/${product.id}`}>{<img className="image" src={product.image} className='cat' />}</Link>
+     </div>   
+</div>
+
+const allProds =
+<div key={product.id}>
+          <div>
+          <Link to={`/products/${product.id}`}>{<img className="image" src={product.image} className='cat' />}</Link>
+          </div>
+          <h3>{product.title}</h3>
+        </div>
+
+*/
