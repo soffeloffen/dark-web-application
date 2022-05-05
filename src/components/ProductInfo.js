@@ -20,7 +20,6 @@ const ProductInfo = ({product}) => {
 
 
 
-
 return (
 <div>
        <button onClick={testMethod} style={{backgroundColor: "green"}}

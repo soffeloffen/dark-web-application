@@ -1,9 +1,7 @@
 import {useParams} from "react-router-dom"
-import productsData from "../productsData"
+import ButtonAddToBasket from './ButtonAddToBasket.js'
+import ButtonRemoveFromBasket from './ButtonRemoveFromBasket.js'
 import { useState, useEffect } from "react";
-
-
-
 
 function ProductDetail() {
     const {productId} = useParams()
