@@ -21,10 +21,8 @@ fetch('http://localhost:3000/products').then(
         console.log("erder ngen")
         setProductsLoaded(true);
     });
+});
 }
-);
-}
-
 if(!typesLoaded){
     fetch('http://localhost:3000/products/types').then(
         (response) => {
@@ -37,9 +35,7 @@ if(!typesLoaded){
     );
 }
 });
-            
-
-///USEEFFECT CONTAINER
+///USEEFFECT CONTAINER/////
 
 ///TYPES CONTAINER
 const Alltypes = types.map((type) => {
