@@ -18,7 +18,6 @@ fetch('http://localhost:3000/products').then(
   (response) => {
     response.json().then((data) => {
         setProducts(data.products);
-        console.log("erder ngen")
         setProductsLoaded(true);
     });
 });
@@ -42,7 +41,7 @@ const Alltypes = types.map((type) => {
         return (
             <div>
             <button key={type} onClick={() => getProducts(type)}>
-                <p>{type}</p>
+                <p>{type}s</p>
             </button>
             </div>
         );
@@ -52,11 +51,12 @@ const Alltypes = types.map((type) => {
 //ALL PRODUCTS CONTAINER
 const AllProducts = products.map((product) => {
     return (
-        <div key={product.id}>
+        <div  key={product.id}>
           <div>
           <Link to={`/products/${product.id}`}>{<img className="image" src={product.image} className='cat' />}</Link>
           </div>
           <h3>{product.title}</h3>
+          <p>{product.shortdescription}</p>
         </div>
   );
 });
@@ -70,28 +70,29 @@ return (
         <>
         <h1>Products Page</h1>
         <h4>Filter by categories</h4>
+        <div id="main">
             {Alltypes}
             <button  onClick={() => setProducts(allprods)}>
                 remove filter
                 </button>
+                </div>
+                <div>
           {AllProducts}
+          </div>
           
         </>
       );
 
 //GET PRODUCT BY TYPEID
       function getProducts(type) {
-        console.log(type);
         fetch('http://localhost:3000/products/types/' + type).then(
             (response) => {
                 response.json().then((data) => {
-                    console.log(data)
                    setProducts(data);
                 });
             }
         )};
-};
 //GET PRODUCT BY TYPEID
 
-
+};
 export default Products
