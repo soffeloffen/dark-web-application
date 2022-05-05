@@ -4,9 +4,6 @@ import ButtonRemoveFromBasket from './ButtonRemoveFromBasket'
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-
-
-
 function ProductDetail() {
     const {productId} = useParams()
     const [product, setProduct] = useState({id: {}})
