@@ -42,7 +42,7 @@ const Alltypes = types.map((type) => {
         return (
             <div>
             <button key={type} onClick={() => getProducts(type)}>
-                <h2>{type}</h2>
+                <p>{type}</p>
             </button>
             </div>
         );
