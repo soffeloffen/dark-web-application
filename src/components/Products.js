@@ -8,7 +8,7 @@ const products = allproducts.map((product) => {
     return (
         <div key={product.id}>
           <div>
-          <Link to={`/products/${product.id}`}>{<img className="image" src={product.image} className='cat' />}</Link>
+          <Link to={`/products/${product.id}`}>{<img className="image" src={product.image} />}</Link>
           </div>
           <h3>{product.title}</h3>
         </div>
