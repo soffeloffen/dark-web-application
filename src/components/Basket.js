@@ -1,17 +1,45 @@
 import React, { useContext } from "react";
 import "./Basket.css";
 import { UserContext } from "./UserContext";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 const Basket = () => {
+  const { signedInUser, setSignedInUser } = useContext(UserContext);
+  //const [basket, setBasket] = useState([]);
 
-  const {signedInUser, setSignedInUser} = useContext(UserContext);
+  //fetch customers
+  const getBasket = async () => {
+    const res = await fetch("http://localhost:3000/customers");
+    const data = await res.json();
+    const currentUserId = data[data.length - 1].id;
+    console.log("Current User Id: " + currentUserId);
 
+    fetch("http://localhost:3000/baskets/" + currentUserId).then((response) => {
+      response.json().then((data) => {
+        console.log("Basket for current user: ");
+        console.log(data);
+        // setBasket(data);
+        // console.log("Set state for current user's basket: " + basket)
 
+        //----------------------CONTINUE BASKET LOGIC HERE-------------------------------
+
+        if(data.products.length == 0){
+          //then return no products in basket 
+        }
+      });
+    });
+  };
+  useEffect(() => {
+    const getCustomers = async () => {
+      const basketFromServer = await getBasket();
+    };
+    getCustomers();
+  }, []);
 
   return (
     <div>
-      
-      <h1 className="basket-title">  Welcome to your basket {signedInUser} </h1>
+      <h1 className="basket-title"> Welcome to your basket {signedInUser} </h1>
     </div>
   );
 };
