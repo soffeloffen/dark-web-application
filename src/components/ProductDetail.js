@@ -18,6 +18,7 @@ useEffect(() => {
     setProduct(productFromServer)}
     getProduct()
 }, [])
+
 //fetch product with given productId
 const fetchProduct = async () => {
     const res = await fetch(`http://localhost:3000/products/${productId}`)
