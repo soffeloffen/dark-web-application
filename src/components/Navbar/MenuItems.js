@@ -17,7 +17,7 @@ export const MenuItems = [
         title: 'Dark Products',
         id: "3",
         cName: 'nav-links',
-        url: "/Products"
+        url: "/products"
     },
     {
         title: 'Sign in',

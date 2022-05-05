@@ -1,0 +1,126 @@
+import ButtonAddToBasket from './ButtonAddToBasket.js'
+import ButtonRemoveFromBasket from './ButtonRemoveFromBasket.js'
+import Slider from 'react-styled-carousel';
+import ReactDOM from 'react-dom'
+import { useState } from 'react'
+
+const ProductOnSale = ({ product }) => {
+const [currentProdID, setCurrentProdID] = useState(0);
+
+
+ const ProdOnSaleDiv =  
+    <div className='product'> 
+       <h4> {product.title}</h4>
+       <div className="img__wrap">
+       <img className="image" src={product.image} className='cat' />
+       <p className="img__description" onClick={() => setCurrentProdID(product.id)  }>
+           {product.shortdescription} <br></br>
+           <br></br>
+           Click here to get more infomation about this product.
+           </p>
+       </div> 
+       </div> 
+
+
+const ProductInfo = 
+<div className='product'> 
+    <buttton onClick={() => setCurrentProdID(0)}>goBack </buttton>
+    <h1> {product.title} </h1>
+    <img className="image2" src={product.image}/>
+     <h3>The price of this product  {product.price} {product.currency} </h3>
+     <p> 
+         {product.longdescription} </p>
+    <ButtonAddToBasket productid = { product.id } />  <ButtonRemoveFromBasket productid = { product.id } />
+</div> 
+
+return (
+    <div className='container'>
+    <b>{product.onsale==true && currentProdID==0 ?  
+    ProdOnSaleDiv : product.id == currentProdID && currentProdID !=0 ? ProductInfo : "" }</b>     
+    </div>
+    )
+}
+
+export default ProductOnSale
+
+
+
+
+________
+import ButtonAddToBasket from './ButtonAddToBasket.js'
+import ButtonRemoveFromBasket from './ButtonRemoveFromBasket.js'
+
+const ProductInfo = ({product}) => {
+
+
+ const testMethod=()=>{
+        //logs the id of product where 'add to basket' is clicked
+        console.log("Show only one, hide others. "+ product.id)
+        return(product.id)
+
+    }
+    
+    const ProdInfoDiv =   
+        <div className='product'>
+           <h4> {product.title}</h4>
+           <img className="image" src={product.image} className='cat' />           
+        <ButtonAddToBasket productid = { product.id } />  <ButtonRemoveFromBasket productid = { product.id } />
+        </div>
+
+
+
+return (
+<div>
+       <button onClick={testMethod} style={{backgroundColor: "green"}}
+       className='btn'> 
+        Test
+       </button>
+       <div className='container'>
+    <b>{product.id==testMethod() ? ProdInfoDiv : ""}</b>     
+    </div>
+    </div>
+    )
+}
+export default ProductInfo
+
+import ButtonAddToBasket from './ButtonAddToBasket.js'
+import ButtonRemoveFromBasket from './ButtonRemoveFromBasket.js'
+import { useState } from 'react'
+    
+
+
+ const Product = ({ product }) => {
+    const [currentProdID, setCurrentProdID] = useState(0);
+    
+
+    const imageClick = (productid) => {
+        console.log('Click!!!! on product id: ' + productid);
+    }  
+
+//Create the ProductDiv with all relevant data to show
+const ProdDiv =   
+    <div className='product'>
+       <h4> {product.title}</h4>
+       <div className="img__wrap">
+       <img className="image" src={product.image} className='cat' />
+       <p className="img__description" onClick={() => setCurrentProdID(product.id)}>
+           {product.shortdescription} <br></br>
+           <br></br>
+           <ProductInfo product = {product}/>
+           Click here to get more infomation about this product.</p>
+         </div>
+        <ButtonAddToBasket productid = { product.id } />  <ButtonRemoveFromBasket productid = { product.id } />
+    </div>
+
+    return (
+        
+        <div className='container'>
+         {ProdDiv}
+        </div>
+        
+    )
+}
+
+export default Product
+
+
