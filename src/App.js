@@ -45,7 +45,7 @@ const App = () => {
         <Navbar />
         <UserContext.Provider value={{signedInUser, setSignedInUser}}>
           <Routes>
-            <Route path="/" element={<ProductsOnSale products = { products }/> }>
+            <Route path="/" element={"" }>
             </Route>
             <Route path="/Basket" element={<Basket />}></Route>
             <Route path="/Products" element={<Products allproducts={products} />}></Route>
