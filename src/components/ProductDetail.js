@@ -4,9 +4,6 @@ import ButtonRemoveFromBasket from './ButtonRemoveFromBasket'
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-
-
-
 function ProductDetail() {
     const {productId} = useParams()
     const [product, setProduct] = useState({id: {}})
@@ -18,6 +15,7 @@ useEffect(() => {
     setProduct(productFromServer)}
     getProduct()
 }, [])
+
 //fetch product with given productId
 const fetchProduct = async () => {
     const res = await fetch(`http://localhost:3000/products/${productId}`)
