@@ -7,14 +7,9 @@ import { useContext } from "react";
 import { useState } from "react";
 
 export const LoginForm2 = () => {
-  const [Username, setUsername] = useState("");
-  const [Password, setPassword] = useState("");
+  const [Fullname, setFullname] = useState("");
+  const [Email, setEmail] = useState("");
   const {signedInUser, setSignedInUser} = useContext(UserContext);
-
-  const [state, setState] = useState({
-    Username: "",
-    Password: ""
-  })
 
   const createBasket = (customerId) => {
     axios.post("http://localhost:3000/baskets", customerId).then((response) => {
@@ -29,7 +24,7 @@ export const LoginForm2 = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = {Username, Password}
+    const data = {Fullname, Email}
     console.log(data);
     axios
       .post("http://localhost:3000/customers", data)
@@ -45,15 +40,15 @@ export const LoginForm2 = () => {
       });
   };
 
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
+  const handleFullnameChange = (event) => {
+    setFullname(event.target.value);
   };
 
-  const handlePasswordChange = (event) => 
-    setPassword(event.target.value);
+  const handleEmailChange = (event) => 
+    setEmail(event.target.value);
 
    const updateUsername = () => {
-    setSignedInUser(Username) 
+    setSignedInUser(Fullname) 
    }
 
   return (
@@ -64,18 +59,18 @@ export const LoginForm2 = () => {
         <input
           type="text"
           required
-          placeholder="Email"
-          name="Username"
+          placeholder="Full name"
+          name="Fullname"
           className="labels"
-          onChange={handleUsernameChange}
+          onChange={handleFullnameChange}
         ></input>
         <input
           type="text"
           required
-          placeholder="Password"
-          name="Password"
+          placeholder="Email"
+          name="Email"
           className="labels"
-          onChange={handlePasswordChange}
+          onChange={handleEmailChange}
         ></input>
         <input type="submit" className="labels"></input>
       </form>
