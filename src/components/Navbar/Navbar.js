@@ -28,8 +28,6 @@ class Navbar extends React.Component {
     }
   }
 
-  
-
   render() {
     return (
       <nav className="NavbarItems">
