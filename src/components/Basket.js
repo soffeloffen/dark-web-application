@@ -5,10 +5,13 @@ import { UserContext } from "./UserContext";
 const Basket = () => {
 
   const {signedInUser, setSignedInUser} = useContext(UserContext);
-  
+
+
+
   return (
     <div>
-      <h1 className="basket-title"> Your Basket </h1>
+      
+      <h1 className="basket-title">  Welcome to your basket {signedInUser} </h1>
     </div>
   );
 };

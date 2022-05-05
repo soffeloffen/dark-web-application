@@ -40,6 +40,7 @@ const products = allproducts.map((product) => {
   );
 });
 
+
 return (
         <>
         <h1>hey</h1>

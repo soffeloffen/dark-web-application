@@ -43,6 +43,7 @@ class Navbar extends React.Component {
                 >
                   <a className={item.cName}>{item.title}</a>
                 </li>
+                
               </Link>
             );
           })}
