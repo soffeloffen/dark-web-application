@@ -17,10 +17,6 @@ const App = () => {
   const [signedInUser, setSignedInUser] = useState("");
 
 
-<<<<<<< HEAD
-
-
-=======
   /*   GET ALL PRODUCTS    */
     useEffect(() => {
         const getProducts = async () => {
@@ -42,7 +38,6 @@ const App = () => {
 
 
   
->>>>>>> 4e6efc2474d90ac0fe4168e2cb1d82601177f9c6
   return (
     <div className="App">
  
