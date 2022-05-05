@@ -11,6 +11,7 @@ import "./product.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import { UserContext } from "./components/UserContext";
+import { LoginForm2 } from "./components/LoginForm2";
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -49,15 +50,11 @@ const App = () => {
             </Route>
             <Route path="/Basket" element={<Basket />}></Route>
             <Route path="/Products" element={<Products allproducts={products} />}></Route>
-            <Route path="/SignIn" element={<LoginForm />}></Route>
+            <Route path="/SignIn" element={<LoginForm2 />}></Route>
             <Route path="/products/:productId" element={<ProductDetail allproducts={products}/>}></Route>
           </Routes>
         </UserContext.Provider>
       </Router>
-
-
-      
-    
     </div>
   );
 };

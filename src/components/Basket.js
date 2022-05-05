@@ -8,7 +8,7 @@ const Basket = () => {
   
   return (
     <div>
-      <h1 className="basket-title"> Your Basket </h1>
+      <h1 className="basket-title"> {signedInUser} Welcome to Your Basket </h1>
     </div>
   );
 };
