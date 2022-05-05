@@ -53,7 +53,7 @@ const AllProducts = products.map((product) => {
     return (
         <div  key={product.id}>
           <div>
-          <Link to={`/products/${product.id}`}>{<img className="image" src={product.image} />}</Link>
+          <Link to={`/products/${product.id}`}>{<img className="image" src={product.image} className="cat" />}</Link>
           </div>
           <h3>{product.title}</h3>
           <p>{product.shortdescription}</p>
