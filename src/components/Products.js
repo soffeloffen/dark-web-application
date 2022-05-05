@@ -15,7 +15,6 @@ const products = allproducts.map((product) => {
   );
 });
 
-
 return (
         <>
           <h1>Products Page</h1>
