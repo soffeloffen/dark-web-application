@@ -5,7 +5,7 @@ const ProductsOnSale = ({ allproducts }) => {
 const products = allproducts.map((product) => {
 
 //A div to show title and image - with link to product detail page for that prod id
-const ProdOnSaleDiv =  <div>
+const ProdOnSaleDiv =  <div className='container'>
     <h3>{product.title}</h3>
         <div>
         <Link to={`/products/${product.id}`}>{<img className="image" src={product.image} className='cat' />}</Link>
