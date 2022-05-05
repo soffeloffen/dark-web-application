@@ -1,6 +1,5 @@
 import ButtonAddToBasket from './ButtonAddToBasket.js'
 import ButtonRemoveFromBasket from './ButtonRemoveFromBasket.js'
-import Slider from 'react-styled-carousel';
 import ReactDOM from 'react-dom'
 import { useState } from 'react'
 
@@ -12,7 +11,7 @@ const [currentProdID, setCurrentProdID] = useState(0);
     <div className='product'> 
        <h4> {product.title}</h4>
        <div className="img__wrap">
-       <img className="image" src={product.image} className='cat' />
+       <img className="image" src={product.image}  />
        <p className="img__description" onClick={() => setCurrentProdID(product.id)  }>
            {product.shortdescription} <br></br>
            <br></br>
