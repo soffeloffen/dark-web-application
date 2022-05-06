@@ -24,16 +24,14 @@ const ButtonRemoveFromBasket = ({ prodid }) => {
         }
       );
 
-      axios.delete("http://localhost:3000/baskets/"+currentUserId+"/products/"+prodid).then((response) => {
-        //Wait for the API to respond - statuscode should be 201 if everything went well
+      axios.delete(`http://localhost:3000/baskets/${currentUserId}/products/${prodid}`).then((response) => {
         console.log(response)
         if (response.status === 201) {
-          console.log("Basket successfully created");
+          console.log("deleted");
         } else {
           console.log("Failed with error code + " + response.status);
         }
       });
-
     };
     deleteBasket();
   };
