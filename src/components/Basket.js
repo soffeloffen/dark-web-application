@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import "./Basket.css";
+import ButtonRemoveFromBasket from './ButtonRemoveFromBasket'
 import { UserContext } from "./UserContext";
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -36,9 +37,26 @@ const Basket = () => {
     getCustomers();
   }, []);
 
+  //ALL PRODUCTS CONTAINER
+const AllProducts = basket.map((product) => {
+  return (
+      <div  key={product.id}>
+        <img className="image" src={product.image} />
+        <h3>{product.title}</h3>
+        <p>{product.price}   {product.currency} </p>
+        <ButtonRemoveFromBasket prodid = {product.id} />
+      </div>
+);
+});
+//ALL PRODUCTS CONTAINER
+
+
+
   return (
     <div>
       <h1 className="basket-title"> Welcome to your basket {signedInUser} </h1>
+    {AllProducts}
+
     </div>
   );
 };
