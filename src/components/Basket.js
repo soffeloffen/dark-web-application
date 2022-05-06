@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 
 const Basket = () => {
   const { signedInUser, setSignedInUser } = useContext(UserContext);
-  //const [basket, setBasket] = useState([]);
+  const [basket, setBasket] = useState([]);
 
   //fetch customers
   const getBasket = async () => {
@@ -19,10 +19,9 @@ const Basket = () => {
       response.json().then((data) => {
         console.log("Basket for current user: ");
         console.log(data);
-        // setBasket(data);
-        // console.log("Set state for current user's basket: " + basket)
-
-        //----------------------CONTINUE BASKET LOGIC HERE-------------------------------
+        setBasket(data.products);
+        const temp = JSON.stringify([data.products])
+        console.log("basket items: " + temp )
 
         if(data.products.length == 0){
           //then return no products in basket 
