@@ -20,18 +20,10 @@ const ButtonRemoveFromBasket = ({ prodid }) => {
             console.log(data);
             const temp = JSON.stringify([data.products]);
             console.log("basket items: " + temp);
+            const basketProductsList = temp.slice(-1);
           });
         }
       );
-
-      axios.delete(`http://localhost:3000/baskets/${currentUserId}/products/${prodid}`).then((response) => {
-        console.log(response)
-        if (response.status === 201) {
-          console.log("deleted");
-        } else {
-          console.log("Failed with error code + " + response.status);
-        }
-      });
     };
     deleteBasket();
   };
