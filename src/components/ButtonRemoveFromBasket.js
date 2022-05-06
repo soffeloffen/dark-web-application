@@ -21,6 +21,7 @@ import axios from "axios";
               }
             });
           }
+          deleteBasket()
     }
 
     return (
