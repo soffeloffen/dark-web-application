@@ -5,6 +5,22 @@
     const onRemoveFromBasket=()=>{
         //logs the id of product where 'removed from basket' is clicked
         console.log("REMOVE FROM BASKET product id: " + prodid)
+
+        const deleteBasket = async () => {
+            const res = await fetch("http://localhost:3000/customers");
+            const data = await res.json();
+            const currentUserId = data[data.length - 1].id;
+            console.log("Current User Id: " + currentUserId);
+            axios.delete("http://localhost:3000/baskets", currentUserId).then((response) => {
+              //Wait for the API to respond - statuscode should be 201 if everything went well
+              console.log(response)
+              if (response.status === 201) {
+                console.log("item created");
+              } else {
+                console.log("Failed with error code + " + response.status);
+              }
+            });
+          }
     }
 
     return (

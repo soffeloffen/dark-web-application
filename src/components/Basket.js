@@ -22,10 +22,6 @@ const Basket = () => {
         setBasket(data.products);
         const temp = JSON.stringify([data.products])
         console.log("basket items: " + temp )
-
-        if(data.products.length == 0){
-          //then return no products in basket 
-        }
       });
     });
   };
