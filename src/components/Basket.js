@@ -21,7 +21,7 @@ const Basket = () => {
         console.log("Basket for current user: ");
         console.log(data);
         setBasket(data.products);
-        const temp = JSON.stringify([data.products])
+        const temp = JSON.stringify(data.products)
         console.log("basket items: " + temp )
       });
     });
