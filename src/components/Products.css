@@ -1,0 +1,12 @@
+.productsview {
+    display: flex;
+    flex-wrap: wrap;
+    columns: 3;
+    margin-left: 265px;
+    margin-top: 80px;
+    grid-gap: 20px
+}
+
+.wrapper {
+    display: grid;
+  }
