@@ -15,6 +15,7 @@ const ProductsOnSale = ({ allproducts }) => {
           <Link to={`/products/${product.id}`}>
             {<img className="image" src={product.image} />}
           </Link>
+          <p>Price: {product.price}$ {product.currency}</p>
         </div>
       </div>
     );
