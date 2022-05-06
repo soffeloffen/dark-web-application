@@ -1,31 +1,45 @@
 import { useState, useEffect } from "react";
- const ButtonAddToBasket = ({prodid}) => {
+import axios from "axios";
+import React, { useContext } from "react";
+import { UserContext } from "./UserContext";
+
+
+
+ const ButtonAddToBasket = ({product}) => {
+    const { signedInUser, setSignedInUser } = useContext(UserContext);
 
     const onAddToBasket=()=>{
+          //fetch customers
+    const getBasket = async () => {
+    const res = await fetch("http://localhost:3000/customers");
+    const data = await res.json();
+    const currentUserId = data[data.length - 1].id;
+    console.log("Current User Id: " + currentUserId);
+
         //logs the id of product where 'add to basket' is clicked
-        console.log("ADDED TO BASKET product id: " + prodid)
-       
-       /* useEffect(() => {
-            // PUT request using fetch inside useEffect React hook
-            const requestOptions = {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-            };
-            fetch('http://localhost:3000/baskets', requestOptions)
-                .then(response => response.json())
-                .then(data => setPostId(data.id));
+        console.log("ADDED TO BASKET product id: " + product.title)
         
-        // empty dependency array means this effect will only run once (like componentDidMount in classes)
-        }, []);*/
+            const productObj = {product};
+            axios.post(`http://localhost:3000/baskets/${currentUserId}/products/${productObj}`).then((response) => {
+              //Wait for the API to respond - statuscode should be 201 if everything went well
+              console.log(response)
+              if (response.status === 201) {
+                console.log("add to basket");
+              } else {
+                console.log("Failed with error code + " + response.status);
+              }
+            });
+          };
+     getBasket();
 
-    }
+}
 
-    return (
-       <button onClick={onAddToBasket} style={{backgroundColor: "green"}}
-       className='btn'> 
-        Add To Basket
-       </button>
-    )
+return (
+    <button onClick={onAddToBasket} style={{backgroundColor: "green"}}
+    className='btn'> 
+     Add To Basket
+    </button>
+ )
 }
 
 export default ButtonAddToBasket
