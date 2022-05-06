@@ -13,7 +13,7 @@ import { UserContext } from "./UserContext";
     const data = await res.json();
     const currentUserId = data[data.length - 1].id;
 
-    console.log("Current User Id: " + currentUserId + productListTest);
+    console.log("Current User Id: " + currentUserId );
 
         //logs the id of product where 'add to basket' is clicked
         console.log("ADDED TO BASKET product: " + product.title)
