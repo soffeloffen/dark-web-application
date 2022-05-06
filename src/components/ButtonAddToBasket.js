@@ -6,20 +6,19 @@ import { UserContext } from "./UserContext";
 
 
  const ButtonAddToBasket = ({product}) => {
-    const { signedInUser, setSignedInUser } = useContext(UserContext);
-
     const onAddToBasket=()=>{
           //fetch customers
     const getBasket = async () => {
     const res = await fetch("http://localhost:3000/customers");
     const data = await res.json();
     const currentUserId = data[data.length - 1].id;
-    console.log("Current User Id: " + currentUserId);
+
+    console.log("Current User Id: " + currentUserId + productListTest);
 
         //logs the id of product where 'add to basket' is clicked
-        console.log("ADDED TO BASKET product id: " + product.title)
+        console.log("ADDED TO BASKET product: " + product.title)
         
-            const productObj = {product};
+            const productObj = product.id;
             axios.post(`http://localhost:3000/baskets/${currentUserId}/products/${productObj}`).then((response) => {
               //Wait for the API to respond - statuscode should be 201 if everything went well
               console.log(response)
