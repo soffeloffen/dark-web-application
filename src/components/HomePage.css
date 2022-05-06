@@ -1,0 +1,15 @@
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 265px;
+    margin-top: 80px;
+    grid-gap: 20px
+}
+
+.title {
+    margin-top: 50px;
+}
+
+.caption {
+    margin-top: 20px;
+}
