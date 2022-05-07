@@ -2,11 +2,33 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "./UserContext";
 import "./HomePage.css";
+import { useState, useEffect } from "react";
+
 
 //take the products array from App.js and convert to lsit of products
-const ProductsOnSale = ({ allproducts }) => {
+const ProductsOnSale = () => {
+  const [allProducts, setAllProducts] = useState([]);
+
+  /* START  GET ALL PRODUCTS    */
+    useEffect(() => {
+        const getAllProducts = async () => {
+            const productsAllFromServer = await fetchAllProducts()
+            setAllProducts(productsAllFromServer)
+        }
+        getAllProducts()
+    }, [])
+
+    //fetch products
+    const fetchAllProducts = async () => {
+        const res = await fetch('http://localhost:3000/products')
+        const data = await res.json()
+        console.log(data)
+        return data.products
+    }
+  /* END  GET ALL PRODUCTS    */ 
+
   const { signedInUser, setSignedInUser } = useContext(UserContext);
-  const products = allproducts.map((product) => {
+  const products = allProducts.map((product) => {
     //A div to show title and image - with link to product detail page for that prod id
     const ProdOnSaleDiv = (
       <div className="container">
