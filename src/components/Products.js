@@ -2,11 +2,31 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 //take the products array from App.js and convert to lsit of products
-const Products = ({ allprods }) => {
-  const [products, setProducts] = useState([]);
+const Products = () => {
+  const [allProducts, setAllProducts] = useState([]);
   const [typesLoaded, setTypesLoaded] = useState(false);
   const [types, setTypes] = useState([]);
   const [productsLoaded, setProductsLoaded] = useState(false);
+  const [products, setProducts] = useState([]);
+  const [signedInUser, setSignedInUser] = useState("");
+
+  /* START  GET ALL PRODUCTS    */
+    useEffect(() => {
+        const getAllProducts = async () => {
+            const productsAllFromServer = await fetchAllProducts()
+            setAllProducts(productsAllFromServer)
+        }
+        getAllProducts()
+    }, [])
+
+    //fetch products
+    const fetchAllProducts = async () => {
+        const res = await fetch('http://localhost:3000/products')
+        const data = await res.json()
+        console.log(data)
+        return data.products
+    }
+  /* END  GET ALL PRODUCTS    */ 
 
   ///USEEFFECT CONTAINER
   useEffect(() => {
@@ -69,7 +89,7 @@ const Products = ({ allprods }) => {
       <h4>Filter by categories</h4>
       <div id="main">
         {Alltypes}
-        <button onClick={() => setProducts(allprods)}>remove filter</button>
+        <button onClick={() => setProducts(allProducts)}>remove filter</button>
       </div>
       <div>{AllProducts}</div>
     </>
