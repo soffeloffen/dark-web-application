@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+//npm install react-bootstrap
+import { Carousel } from 'react-bootstrap';
 
 //take the products array from App.js and convert to lsit of products
 const Products = () => {
@@ -9,6 +11,7 @@ const Products = () => {
   const [productsLoaded, setProductsLoaded] = useState(false);
   const [products, setProducts] = useState([]);
   const [signedInUser, setSignedInUser] = useState("");
+  
 
   /* START  GET ALL PRODUCTS    */
     useEffect(() => {
@@ -51,6 +54,7 @@ const Products = () => {
   });
   ///USEEFFECT CONTAINER/////
 
+
   ///TYPES CONTAINER
   const Alltypes = types.map((type) => {
     return (
@@ -63,18 +67,34 @@ const Products = () => {
   });
   ///TYPES CONTAINER
 
+  
   //ALL PRODUCTS CONTAINER
   const AllProducts = products.map((product) => {
     return (
-      <div className="wrapper" key={product.id}>
         <div>
-          <Link to={`/products/${product.id}`}>
-            {<img className="image" src={product.image} />}
-          </Link>
-          <h3>{product.title}</h3>
-          <p>{product.shortdescription}</p>
+        <div className='container-fluid' >
+        <div className="row">
+        <div className="col-12">
+        <Carousel>
+        <Carousel.Item>
+            <div className="wrapper" key={product.id}>
+                <div>
+               <Link to={`/products/${product.id}`}>
+                    {<img className="image" src={product.image} />}
+                 </Link>
+             <Carousel.Caption>
+                <h3>{product.title}</h3>
+                 <p>{product.shortdescription}</p>
+            </Carousel.Caption>
+            </div>
+            </div>
+            </Carousel.Item>
+            </Carousel>
         </div>
-      </div>
+        </div>
+        </div>
+        </div>
+     
     );
   });
   //ALL PRODUCTS CONTAINER
@@ -83,6 +103,9 @@ const Products = () => {
   //1.RETURNS BUTTONS FOR ALL TYPES
   //2.RETURNS BUTTON FOR REMOVE FILTER -> setProducts to allproducts
   //3.RETURN ALL PRODUCTS (DEFAULT)
+
+  
+
   return (
     <>
       <h1>Products Page</h1>
