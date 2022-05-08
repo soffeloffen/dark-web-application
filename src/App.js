@@ -9,7 +9,9 @@ import "./product.css";
 // import { Router } from "express";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { UserContext } from "./components/UserContext";
-import { LoginForm2 } from "./components/LoginForm2";
+import { LoginForm } from "./components/LoginForm";
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 
 const App = () => {
   const [signedInUser, setSignedInUser] = useState("");
@@ -25,7 +27,7 @@ const App = () => {
             <Route path="/" element={<HomePage />}></Route>
             <Route path="/Basket" element={<Basket />}></Route>
             <Route path="/products" element={<Products />}></Route>
-            <Route path="/SignIn" element={<LoginForm2 />}></Route>
+            <Route path="/SignIn" element={<LoginForm />}></Route>
             <Route path="/products/:productId" element={<ProductDetail/>}></Route>
           </Routes>
         </UserContext.Provider>

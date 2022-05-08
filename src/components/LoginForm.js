@@ -6,7 +6,7 @@ import React from "react";
 import { useContext } from "react";
 import { useState } from "react";
 
-export const LoginForm2 = () => {
+export const LoginForm = () => {
   const [Fullname, setFullname] = useState("");
   const [Email, setEmail] = useState("");
   const {signedInUser, setSignedInUser} = useContext(UserContext);
