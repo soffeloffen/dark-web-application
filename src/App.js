@@ -13,7 +13,25 @@ import { LoginForm } from "./components/LoginForm";
 
 
 const App = () => {
-  const [signedInUser, setSignedInUser] = useState("");
+  const [products, setProducts] = useState([]);
+  const [signedInUser, setSignedInUser] = useState(undefined);
+
+
+  /*   GET ALL PRODUCTS   
+    useEffect(() => {
+        const getProducts = async () => {
+            const productsFromServer = await fetchProducts()
+            setProducts(productsFromServer)
+        }
+        getProducts()
+    }, [])
+
+    //fetch products
+    const fetchProducts = async () => {
+        const res = await fetch('http://localhost:3000/products')
+        const data = await res.json()
+        return data.products
+    } */
 
 
   return (
@@ -22,7 +40,7 @@ const App = () => {
         <Navbar />
         <UserContext.Provider value={{signedInUser, setSignedInUser}}>
           <Routes>
-            <Route path="/" element={<HomePage />}></Route>
+            <Route path="" element={<HomePage allproducts={products} />}></Route>
             <Route path="/Basket" element={<Basket />}></Route>
             <Route path="/products" element={<Products />}></Route>
             <Route path="/SignIn" element={<LoginForm />}></Route>

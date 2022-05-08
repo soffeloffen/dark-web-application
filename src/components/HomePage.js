@@ -41,7 +41,6 @@ const ProductsOnSale = () => {
         </div>
       </div>
     );
-
     //return ProdOnSaleDiv if that product's onsale attribute ==true
     return (
       <div key={product.id}>
@@ -50,10 +49,19 @@ const ProductsOnSale = () => {
     );
   });
 
+  const welcomeGreeting = () => {
+    let greeting = "Welcome to the Dark Web";
+
+    if(signedInUser){
+      greeting  += signedInUser.Fullname;
+    }
+    return <h1 className="title">{greeting}</h1>
+  }
+
   //return to the page, the welcome title and the list of products (which here is only products onsale)
   return (
     <>
-      <h1 className="title">Welcome to the Dark Web {signedInUser}</h1>
+      {welcomeGreeting()}
       <h3 className="caption">Products On Sale !!</h3>
       <div className="products">{products}</div>
     </>

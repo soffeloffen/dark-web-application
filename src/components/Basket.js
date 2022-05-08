@@ -1,58 +1,109 @@
 import React, { useContext } from "react";
 import "./Basket.css";
-import ButtonRemoveFromBasket from './ButtonRemoveFromBasket'
+import ButtonRemoveFromBasket from "./ButtonRemoveFromBasket";
 import { UserContext } from "./UserContext";
-import axios from "axios";
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 const Basket = () => {
   const { signedInUser, setSignedInUser } = useContext(UserContext);
-  const [basket, setBasket] = useState([]);
+  const [basket, setBasket] = useState([]); //Contains the users basket from db with id's and quantities of each product
+  const [basketProducts, setBasketProducts] = useState([]); //Contains products fetched from db based on the product id's in the users basket
 
-  //fetch customers
-  const getBasket = async () => {
-    const res = await fetch("http://localhost:3000/customers");
-    const data = await res.json();
-    const currentUserId = data[data.length - 1].id;
-    console.log("Current User Id: " + currentUserId);
-
-    fetch("http://localhost:3000/baskets/" + currentUserId).then((response) => {
-      response.json().then((data) => {
-        console.log("Basket for current user: ");
-        console.log(data);
-        setBasket(data.products);
-        const temp = JSON.stringify(data.products)
-        console.log("basket items: " + temp )
+  const fetchItemsFromBasket = (basket) => {
+    //reset the basket products
+    setBasketProducts([]);
+    //Loop over the new basket and map the products
+    basket.products.map((x) => {
+      axios.get(`http://localhost:3000/products/${x.id}`).then((response) => {
+        setBasketProducts((basketProducts) => [
+          ...basketProducts,
+          response.data[0],
+        ]);
       });
     });
   };
+
+  //Used when an item is removed from basket in ButtonRemoveFromBasket Component
+  const handleItemRemoved = (newBasket) => {
+    //Set the basket state to the new basket
+    setBasket(newBasket);
+
+    //Set the basket products again
+    fetchItemsFromBasket(newBasket);
+  };
+
   useEffect(() => {
-    const getCustomers = async () => {
-      const basketFromServer = await getBasket();
-    };
-    getCustomers();
+    //Avoid fetching data if there is not a signed in user
+    if (!signedInUser) {
+      return;
+    }
+    //Fetch the users basket
+    axios
+      .get(`http://localhost:3000/baskets/${signedInUser.id}`)
+      .then((response) => {
+        //Update basket state
+        setBasket(response.data);
+        //Update the basketk products
+        fetchItemsFromBasket(response.data);
+      });
   }, []);
 
-  //ALL PRODUCTS CONTAINER
-const AllProducts = basket.map((product) => {
-  return (
-      <div  key={product.id}>
-        <img className="image" src={product.image} />
-        <h3>{product.title}</h3>
-        <p>{product.price}   {product.currency} </p>
-        <ButtonRemoveFromBasket prodid = {product.id} />
+  if (!signedInUser) {
+    return <h2>You need to be signed in to view your basket</h2>;
+  } else {
+    let totalProductsInBasket = 0;
+    //Check that basket has loaded, then calculate the total products as the sum of the quantity properties
+    if (basket.products != undefined && basket.products.length != 0) {
+      totalProductsInBasket = basket.products
+        .map((x) => x.quantity)
+        .reduce((prev, cur) => prev + cur);
+    }
+
+    return (
+      <div>
+        <h1>Basket</h1>
+        {totalProductsMessage(totalProductsInBasket)}
+        {basketProducts.map((x) => (
+          <BasketProduct
+            product={x}
+            basket={basket}
+            onChange={handleItemRemoved}
+            key={x.id}
+          ></BasketProduct>
+        ))}
       </div>
-);
-});
-//ALL PRODUCTS CONTAINER
+    );
+  }
+};
 
+const totalProductsMessage = (totalProductsInBasket) => {
+  if(totalProductsInBasket == 0){
+    return <h2>There are no products in the basket. <br></br>Products can be added from the 'Dark products' tab in the menu</h2>
+  }
+  else {
+    return <h2>Total products in basket: {totalProductsInBasket}</h2>
+  }
+}
 
+const BasketProduct = (props) => {
+  //Find quantity of product ind basket
+  let quantity = 0;
+  if (props.basket.products.length != 0) {
+    quantity = props.basket.products.find(
+      (y) => y.id == props.product.id
+    ).quantity;
+  }
 
   return (
-    <div>
-      <h1 className="basket-title"> Welcome to your basket {signedInUser} </h1>
-    {AllProducts}
-
+    <div className="basketProduct">
+      <h2>{props.product.title}</h2>
+      <img src={props.product.image}></img>
+      <h3>Quantity: {quantity}</h3>
+      <ButtonRemoveFromBasket
+        prodid={props.product.id}
+        onChange={props.onChange}
+      />
     </div>
   );
 };

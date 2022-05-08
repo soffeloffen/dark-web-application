@@ -1,46 +1,50 @@
 import axios from "axios";
+import { UserContext } from "./UserContext";
+import { useContext } from "react";
 
-const ButtonRemoveFromBasket = ({ prodid }) => {
-  //"baskets/:id/products/:prodId"
+const ButtonRemoveFromBasket = (props) => {
+  const { signedInUser, setSignedInUser } = useContext(UserContext);
 
-  const onRemoveFromBasket = () => {
-    //logs the id of product where 'removed from basket' is clicked
-    console.log("REMOVE FROM BASKET product id: " + prodid);
+  //Used when the user clicks on the 'remove from basket' button
+  const onRemoveFromBasket = (id) => {
+    //Get basket of currently signed in user
+    const currentUserId = signedInUser.id;
+    axios
+      .get(`http://localhost:3000/baskets/${currentUserId}`)
+      .then((response) => {
+        let basket = response.data;
+        let productsInBasket = basket.products;
+        let productToRemoveInBasket = productsInBasket.find((x) => x.id == id);
 
-    const deleteBasket = async () => {
-      const res = await fetch("http://localhost:3000/customers");
-      const data = await res.json();
-      const currentUserId = data[data.length - 1].id;
-      console.log("Current User Id: " + currentUserId);
+        //Modify basket
+        if (productToRemoveInBasket.quantity == 1) {
+          //Only 1 left in basket - Remove product from basket array.
+          //Find index of product to remove
+          const indexInArray = productsInBasket.indexOf(
+            productToRemoveInBasket
+          );
 
-      fetch("http://localhost:3000/baskets/" + currentUserId).then(
-        (response) => {
-          response.json().then((data) => {
-            console.log("Basket for current user: ");
-            console.log(data);
-            const temp = JSON.stringify([data.products]);
-            console.log("basket items: " + temp);
-          });
-        }
-      );
-
-      axios.delete("http://localhost:3000/baskets/"+currentUserId+"/products/"+prodid).then((response) => {
-        //Wait for the API to respond - statuscode should be 201 if everything went well
-        console.log(response)
-        if (response.status === 201) {
-          console.log("Basket successfully created");
+          //Use array.splice to remove product at the specified index
+          productsInBasket.splice(indexInArray, 1);
         } else {
-          console.log("Failed with error code + " + response.status);
+          //Decrease quantity of the product in basket
+          productToRemoveInBasket.quantity -= 1;
         }
-      });
 
-    };
-    deleteBasket();
+        axios
+          .put(`http://localhost:3000/baskets/${currentUserId}`, basket)
+          .then((response) => {
+            if (response.status == 200) {
+              //We've received our updated basket - call the onChange method to tell parent component to update
+              props.onChange(response.data.newBasket);
+            }
+          });
+      });
   };
 
   return (
     <button
-      onClick={onRemoveFromBasket}
+      onClick={() => onRemoveFromBasket(props.prodid)}
       style={{ backgroundColor: "red" }}
       className="btn"
     >
@@ -50,6 +54,3 @@ const ButtonRemoveFromBasket = ({ prodid }) => {
 };
 
 export default ButtonRemoveFromBasket;
-
-//Buttons to put for each product. But Product doesn't work right now
-//<ButtonAddToBasket productid = { product.id } />  <ButtonRemoveFromBasket productid = { product.id } />

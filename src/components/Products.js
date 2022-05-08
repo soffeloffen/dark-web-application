@@ -58,7 +58,7 @@ const Products = () => {
   ///TYPES CONTAINER
   const Alltypes = types.map((type) => {
     return (
-      <div>
+      <div key={type}>
         <button key={type} onClick={() => getProducts(type)}>
           <p>{type}s</p>
         </button>

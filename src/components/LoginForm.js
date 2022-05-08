@@ -1,7 +1,6 @@
 import "./LoginForm.css";
 import axios from "axios";
 import { UserContext } from "./UserContext";
-// import { React } from "react";
 import React from "react";
 import { useContext } from "react";
 import { useState } from "react";
@@ -12,9 +11,7 @@ export const LoginForm = () => {
   const {signedInUser, setSignedInUser} = useContext(UserContext);
 
   const createBasket = (customerId) => {
-    console.log("customer id: " + customerId)
-    const customerIdObj = { customerId: customerId };
-    axios.post("http://localhost:3000/baskets", customerIdObj).then((response) => {
+    axios.post("http://localhost:3000/baskets", customerId).then((response) => {
       //Wait for the API to respond - statuscode should be 201 if everything went well
       console.log(response)
       if (response.status === 201) {
@@ -34,7 +31,7 @@ export const LoginForm = () => {
       .then((response) => {
         console.log(response);
         if (response.status === 201) {
-          updateUsername();
+          updateSignedInUser(response.data);
           createBasket(response.data.id);
         }
       })
@@ -50,8 +47,14 @@ export const LoginForm = () => {
   const handleEmailChange = (event) => 
     setEmail(event.target.value);
 
-   const updateUsername = () => {
-    setSignedInUser(Fullname) 
+   const updateSignedInUser = (user) => {
+    console.log('setting new user to', user)
+    setSignedInUser(user) 
+    // alert(`${user.Fullname} signed in`)
+   }
+
+   if(signedInUser){
+     return <h1>Signed in as {signedInUser.Fullname}</h1>
    }
 
   return (
