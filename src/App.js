@@ -10,12 +10,10 @@ import "./product.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { UserContext } from "./components/UserContext";
 import { LoginForm } from "./components/LoginForm";
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 
 const App = () => {
   const [signedInUser, setSignedInUser] = useState("");
-
 
 
   return (

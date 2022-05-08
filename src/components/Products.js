@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-//npm install react-bootstrap
-import { Carousel } from 'react-bootstrap';
+import "./style.css";
+import React, { Fragment } from "react";
 
 //take the products array from App.js and convert to lsit of products
 const Products = () => {
@@ -11,7 +11,7 @@ const Products = () => {
   const [productsLoaded, setProductsLoaded] = useState(false);
   const [products, setProducts] = useState([]);
   const [signedInUser, setSignedInUser] = useState("");
-  
+
 
   /* START  GET ALL PRODUCTS    */
     useEffect(() => {
@@ -71,40 +71,27 @@ const Products = () => {
   //ALL PRODUCTS CONTAINER
   const AllProducts = products.map((product) => {
     return (
-        <div>
-        <div className='container-fluid' >
-        <div className="row">
-        <div className="col-12">
-        <Carousel>
-        <Carousel.Item>
-            <div className="wrapper" key={product.id}>
-                <div>
+       
+            <div  key={product.id}>
+                <div className="prod__image">
                <Link to={`/products/${product.id}`}>
                     {<img className="image" src={product.image} />}
                  </Link>
-             <Carousel.Caption>
+                 <div className="prod__price">
                 <h3>{product.title}</h3>
                  <p>{product.shortdescription}</p>
-            </Carousel.Caption>
+                 </div>
             </div>
             </div>
-            </Carousel.Item>
-            </Carousel>
-        </div>
-        </div>
-        </div>
-        </div>
-     
+        
     );
   });
   //ALL PRODUCTS CONTAINER
-
   //RETURN CONTAINER
   //1.RETURNS BUTTONS FOR ALL TYPES
   //2.RETURNS BUTTON FOR REMOVE FILTER -> setProducts to allproducts
   //3.RETURN ALL PRODUCTS (DEFAULT)
 
-  
 
   return (
     <>
@@ -114,7 +101,8 @@ const Products = () => {
         {Alltypes}
         <button onClick={() => setProducts(allProducts)}>remove filter</button>
       </div>
-      <div>{AllProducts}</div>
+        <div className="collection" >{AllProducts}</div>
+
     </>
   );
 
@@ -128,4 +116,6 @@ const Products = () => {
   }
   //GET PRODUCT BY TYPEID
 };
+
+
 export default Products;

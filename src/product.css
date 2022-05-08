@@ -77,4 +77,11 @@
     opacity: 1;
   }
 
+  .prod__longdes {
+    background-color: #e5e5e5;
+    display: block;
+    min-height: 100%;
+    width: 100%;
+    align-items: center;
 
+  }

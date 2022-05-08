@@ -36,7 +36,9 @@ const fetchProduct = async () => {
             <img  className='image2'  src={"/"+product.image}/>
             <p>Price: {product.price}</p>
             <ButtonAddToBasket product = {product} />  <ButtonRemoveFromBasket prodid = {product.id} />
-            <p>{product.longdescription}</p>
+            <div className="prod__longdes">
+            <p >{product.longdescription}</p>
+            </div>
         </div>
     )
 }
