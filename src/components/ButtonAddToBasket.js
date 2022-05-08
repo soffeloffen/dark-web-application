@@ -3,42 +3,54 @@ import axios from "axios";
 import React, { useContext } from "react";
 import { UserContext } from "./UserContext";
 
+const ButtonAddToBasket = ({ product }) => {
+  const { signedInUser, setSignedInUser } = useContext(UserContext);
+  const onAddToBasket = () => {
 
+    if(!signedInUser){
+      alert('you need to be signed in before adding to basket')
+      return;
+    }
+    const currentUserId = signedInUser.id;
+    
+    //Get current basket for user
+    axios
+      .get(`http://localhost:3000/baskets/${currentUserId}`)
+      .then((response) => {
+        var currentBasket = response.data;
+        if (
+          currentBasket.products.filter((x) => x.id == product.id).length != 0
+        ) {
+          var productInBasket = currentBasket.products.find(
+            (x) => x.id == product.id
+          );
+          productInBasket.quantity += 1;
+        } else {
+          currentBasket.products.push({ id: product.id, quantity: 1 });
+        }
 
- const ButtonAddToBasket = ({product}) => {
-    const onAddToBasket=()=>{
-          //fetch customers
-    const getBasket = async () => {
-    const res = await fetch("http://localhost:3000/customers");
-    const data = await res.json();
-    const currentUserId = data[data.length - 1].id;
+        axios
+          .put(`http://localhost:3000/baskets/${currentUserId}`, currentBasket)
+          .then((response) => {
+            console.log(response);
+            if (response.status === 200) {
+              alert(`${product.title} added to basket`)
+            } else {
+              console.log("Failed with error code + " + response.status);
+            }
+          });
+      });
 
-    console.log("Current User Id: " + currentUserId );
-
-        //logs the id of product where 'add to basket' is clicked
-        console.log("ADDED TO BASKET product: " + product.title)
-        
-            const productObj = product.id;
-            axios.post(`http://localhost:3000/baskets/${currentUserId}/products/${productObj}`).then((response) => {
-              //Wait for the API to respond - statuscode should be 201 if everything went well
-              console.log(response)
-              if (response.status === 201) {
-                console.log("add to basket");
-              } else {
-                console.log("Failed with error code + " + response.status);
-              }
-            });
-          };
-     getBasket();
-
-}
-
-return (
-    <button onClick={onAddToBasket} style={{backgroundColor: "green"}}
-    className='btn'> 
-     Add To Basket
+  };
+  return (
+    <button
+      onClick={onAddToBasket}
+      style={{ backgroundColor: "green" }}
+      className="btn"
+    >
+      Add To Basket
     </button>
- )
-}
+  );
+};
 
-export default ButtonAddToBasket
+export default ButtonAddToBasket;

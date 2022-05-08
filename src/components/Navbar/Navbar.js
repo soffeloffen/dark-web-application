@@ -13,10 +13,10 @@ class Navbar extends React.Component {
 
     switch (this.state.clicked) {
       case "1":
-        console.log("hej");
+        // console.log("hej");
       case "2":
         <h1>HEJSA</h1>;
-        console.log(this.state);
+        // console.log(this.state);
       case "3":
       // render the form for paypal payment
       case "4":
@@ -34,13 +34,13 @@ class Navbar extends React.Component {
         <ul className="nav-menu">
           {MenuItems.map((item, index) => {
             return (
-              <Link to={item.url}>
+              <Link to={item.url} key={index} className={item.cName}> 
                 <li
                   key={index}
                   id={item.id}
                   onClick={() => this.handleClick(item.id)}
                 >
-                  <a className={item.cName}>{item.title}</a>
+                  {item.title}
                 </li>
                 
               </Link>

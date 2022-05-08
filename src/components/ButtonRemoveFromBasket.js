@@ -1,36 +1,54 @@
 import axios from "axios";
+import { UserContext } from "./UserContext";
+import { useContext } from "react";
 
-const ButtonRemoveFromBasket = ({ prodid }) => {
+const ButtonRemoveFromBasket = (props) => {
   //"baskets/:id/products/:prodId"
 
-  const onRemoveFromBasket = () => {
+  const { signedInUser, setSignedInUser } = useContext(UserContext);
+
+  const onRemoveFromBasket = (id) => {
     //logs the id of product where 'removed from basket' is clicked
-    console.log("REMOVE FROM BASKET product id: " + prodid);
+    console.log("REMOVE FROM BASKET product id: " + id);
 
-    const deleteBasket = async () => {
-      const res = await fetch("http://localhost:3000/customers");
-      const data = await res.json();
-      const currentUserId = data[data.length - 1].id;
-      console.log("Current User Id: " + currentUserId);
+    //Get basket
+    const currentUserId = signedInUser.id;
+    axios
+      .get(`http://localhost:3000/baskets/${currentUserId}`)
+      .then((response) => {
+        let basket = response.data;
+        console.log("received basket", basket);
+        let productsInBasket = basket.products;
+        let productToRemoveInBasket = productsInBasket.find((x) => x.id == id);
 
-      fetch("http://localhost:3000/baskets/" + currentUserId).then(
-        (response) => {
-          response.json().then((data) => {
-            console.log("Basket for current user: ");
-            console.log(data);
-            const temp = JSON.stringify([data.products]);
-            console.log("basket items: " + temp);
-            const basketProductsList = temp.slice(-1);
-          });
+        //Modify basket
+        if (productToRemoveInBasket.quantity == 1) {
+          //Remove product from array
+          const indexInArray = productsInBasket.indexOf(
+            productToRemoveInBasket
+          );
+
+          //Remove at the specified index and delete only 1
+          productsInBasket.splice(indexInArray, 1);
+        } else {
+          //Decrease quantity
+          productToRemoveInBasket.quantity -= 1;
         }
-      );
-    };
-    deleteBasket();
+
+        axios.put(`http://localhost:3000/baskets/${currentUserId}`, basket).then((response) => {
+          if(response.status == 200){
+            console.log(response.data, 'response from put')
+            props.onChange(response.data.newBasket)
+          }
+        })
+      });
+
+    //Update basket
   };
 
   return (
     <button
-      onClick={onRemoveFromBasket}
+      onClick={() => onRemoveFromBasket(props.prodid)}
       style={{ backgroundColor: "red" }}
       className="btn"
     >
@@ -40,6 +58,3 @@ const ButtonRemoveFromBasket = ({ prodid }) => {
 };
 
 export default ButtonRemoveFromBasket;
-
-//Buttons to put for each product. But Product doesn't work right now
-//<ButtonAddToBasket productid = { product.id } />  <ButtonRemoveFromBasket productid = { product.id } />

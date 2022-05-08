@@ -20,8 +20,7 @@ useEffect(() => {
 const fetchProduct = async () => {
     const res = await fetch(`http://localhost:3000/products/${productId}`)
     const data = await res.json()
-    console.log(product)
-    console.log(data)
+    
     //return data[0] because the API call returns a list with one element at place 0
     return data[0]
 }
@@ -34,7 +33,8 @@ const fetchProduct = async () => {
             <h2>{product.title}</h2>
             <img  className='image2'  src={"/"+product.image}/>
             <p>Price: {product.price}</p>
-            <ButtonAddToBasket product = {product} />  <ButtonRemoveFromBasket prodid = {product.id} />
+            <ButtonAddToBasket product = {product} />  
+            {/* <ButtonRemoveFromBasket prodid = {product.id} /> */}
             <p>{product.longdescription}</p>
         </div>
     )
