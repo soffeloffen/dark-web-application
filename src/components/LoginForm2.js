@@ -50,7 +50,11 @@ export const LoginForm2 = () => {
    const updateSignedInUser = (user) => {
     console.log('setting new user to', user)
     setSignedInUser(user) 
-    alert(`${user.Fullname} signed in`)
+    // alert(`${user.Fullname} signed in`)
+   }
+
+   if(signedInUser){
+     return <h1>Signed in as {signedInUser.Fullname}</h1>
    }
 
   return (

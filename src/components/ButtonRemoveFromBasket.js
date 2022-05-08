@@ -3,47 +3,43 @@ import { UserContext } from "./UserContext";
 import { useContext } from "react";
 
 const ButtonRemoveFromBasket = (props) => {
-  //"baskets/:id/products/:prodId"
-
   const { signedInUser, setSignedInUser } = useContext(UserContext);
 
+  //Used when the user clicks on the 'remove from basket' button
   const onRemoveFromBasket = (id) => {
-    //logs the id of product where 'removed from basket' is clicked
-    console.log("REMOVE FROM BASKET product id: " + id);
-
-    //Get basket
+    //Get basket of currently signed in user
     const currentUserId = signedInUser.id;
     axios
       .get(`http://localhost:3000/baskets/${currentUserId}`)
       .then((response) => {
         let basket = response.data;
-        console.log("received basket", basket);
         let productsInBasket = basket.products;
         let productToRemoveInBasket = productsInBasket.find((x) => x.id == id);
 
         //Modify basket
         if (productToRemoveInBasket.quantity == 1) {
-          //Remove product from array
+          //Only 1 left in basket - Remove product from basket array.
+          //Find index of product to remove
           const indexInArray = productsInBasket.indexOf(
             productToRemoveInBasket
           );
 
-          //Remove at the specified index and delete only 1
+          //Use array.splice to remove product at the specified index
           productsInBasket.splice(indexInArray, 1);
         } else {
-          //Decrease quantity
+          //Decrease quantity of the product in basket
           productToRemoveInBasket.quantity -= 1;
         }
 
-        axios.put(`http://localhost:3000/baskets/${currentUserId}`, basket).then((response) => {
-          if(response.status == 200){
-            console.log(response.data, 'response from put')
-            props.onChange(response.data.newBasket)
-          }
-        })
+        axios
+          .put(`http://localhost:3000/baskets/${currentUserId}`, basket)
+          .then((response) => {
+            if (response.status == 200) {
+              //We've received our updated basket - call the onChange method to tell parent component to update
+              props.onChange(response.data.newBasket);
+            }
+          });
       });
-
-    //Update basket
   };
 
   return (

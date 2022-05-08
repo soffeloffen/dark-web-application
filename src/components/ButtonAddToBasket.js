@@ -8,7 +8,7 @@ const ButtonAddToBasket = ({ product }) => {
   const onAddToBasket = () => {
 
     if(!signedInUser){
-      alert('you need to be signed in before adding to basket')
+      alert('You need to be signed in before adding to basket')
       return;
     }
     const currentUserId = signedInUser.id;
@@ -32,7 +32,6 @@ const ButtonAddToBasket = ({ product }) => {
         axios
           .put(`http://localhost:3000/baskets/${currentUserId}`, currentBasket)
           .then((response) => {
-            console.log(response);
             if (response.status === 200) {
               alert(`${product.title} added to basket`)
             } else {

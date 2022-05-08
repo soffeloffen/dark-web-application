@@ -13,7 +13,7 @@ import { LoginForm2 } from "./components/LoginForm2";
 
 const App = () => {
   const [products, setProducts] = useState([]);
-  const [signedInUser, setSignedInUser] = useState("");
+  const [signedInUser, setSignedInUser] = useState(undefined);
 
 
   /*   GET ALL PRODUCTS    */
@@ -39,7 +39,7 @@ const App = () => {
         <Navbar />
         <UserContext.Provider value={{signedInUser, setSignedInUser}}>
           <Routes>
-            <Route path="/" element={<HomePage allproducts={products} />}></Route>
+            <Route path="" element={<HomePage allproducts={products} />}></Route>
             <Route path="/Basket" element={<Basket />}></Route>
             <Route path="/products" element={<Products allprods={products} />}></Route>
             <Route path="/SignIn" element={<LoginForm2 />}></Route>
