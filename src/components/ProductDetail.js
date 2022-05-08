@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 function ProductDetail() {
     const {productId} = useParams()
     const [product, setProduct] = useState({id: {}})
+    
 
 //make the API call to server
 useEffect(() => {

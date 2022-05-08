@@ -41,9 +41,9 @@ const App = () => {
           <Routes>
             <Route path="" element={<HomePage allproducts={products} />}></Route>
             <Route path="/Basket" element={<Basket />}></Route>
-            <Route path="/products" element={<Products allprods={products} />}></Route>
+            <Route path="/products" element={<Products />}></Route>
             <Route path="/SignIn" element={<LoginForm2 />}></Route>
-            <Route path="/products/:productId" element={<ProductDetail allproducts={products}/>}></Route>
+            <Route path="/products/:productId" element={<ProductDetail/>}></Route>
           </Routes>
         </UserContext.Provider>
       </Router>
