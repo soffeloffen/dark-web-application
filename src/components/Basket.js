@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
 import "./Basket.css";
+//import ButtonAddToBasket from "./ButtonAddToBasket";
 import ButtonRemoveFromBasket from "./ButtonRemoveFromBasket";
 import { UserContext } from "./UserContext";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { set } from "react-hook-form";
 
 const Basket = () => {
+
   const { signedInUser, setSignedInUser } = useContext(UserContext);
   const [basket, setBasket] = useState([]); //Contains the users basket from db with id's and quantities of each product
   const [basketProducts, setBasketProducts] = useState([]); //Contains products fetched from db based on the product id's in the users basket
@@ -82,7 +85,9 @@ const totalProductsMessage = (totalProductsInBasket) => {
     return <h2>There are no products in the basket. <br></br>Products can be added from the 'Dark products' tab in the menu</h2>
   }
   else {
-    return <h2>Total products in basket: {totalProductsInBasket}</h2>
+    return <h2>Total products in basket: {totalProductsInBasket} <br></br>
+            Total Price:{} </h2>
+
   }
 }
 
@@ -95,11 +100,14 @@ const BasketProduct = (props) => {
     ).quantity;
   }
 
+
+
   return (
     <div className="basketProduct">
       <h2>{props.product.title}</h2>
       <img src={props.product.image}></img>
-      <h3>Quantity: {quantity}</h3>
+      <h3>Quantity: {quantity}</h3> 
+      <h3>Price: {props.product.price}  ${props.product.currency}</h3> 
       <ButtonRemoveFromBasket
         prodid={props.product.id}
         onChange={props.onChange}
