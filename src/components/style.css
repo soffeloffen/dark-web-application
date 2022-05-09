@@ -32,23 +32,23 @@
 }
 
 .button {
-  background-color: black; /* Green */
+  background-color:  rgb(37, 37, 37); 
   border: none;
   color: white;
-  padding: 25px 15px;
+  padding: 20px 18px;
   text-align:center;
   text-decoration: none;
   display: inline-block;
-  font-size: 12px;
-  height: 30px;
+  font-size: 14px;
+  height: 20px;
   width: 120px;
-  max-height: 100%;
+  max-height: 80%;
   max-width: 180%;
 
 }
 
 .button:hover {
-  background-color:gray;
+  background-color:rgb(179,179,179);
   color: black;
 }
 
