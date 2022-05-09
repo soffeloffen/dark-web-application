@@ -5,7 +5,7 @@ import "./HomePage.css";
 import { useState, useEffect } from "react";
 
 
-//take the products array from App.js and convert to lsit of products
+//take the products array from App.js and convert to list of products
 const ProductsOnSale = () => {
   const [allProducts, setAllProducts] = useState([]);
 
