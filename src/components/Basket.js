@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import "./Basket.css";
-//import ButtonAddToBasket from "./ButtonAddToBasket";
 import ButtonRemoveFromBasket from "./ButtonRemoveFromBasket";
 import { UserContext } from "./UserContext";
 import { useState, useEffect } from "react";
@@ -57,7 +56,7 @@ const Basket = () => {
   } else {
     let totalProductsInBasket = 0;
     //Check that basket has loaded, then calculate the total products as the sum of the quantity properties
-    if (basket.products != undefined && basket.products.length != 0) {
+    if (basket.products !== undefined && basket.products.length !== 0) {
       totalProductsInBasket = basket.products
         .map((x) => x.quantity)
         .reduce((prev, cur) => prev + cur);

@@ -50,7 +50,7 @@ const ProductsOnSale = () => {
   });
 
   const welcomeGreeting = () => {
-    let greeting = "Welcome to the Dark Web";
+    let greeting = "Welcome to the Dark Web ";
 
     if(signedInUser){
       greeting  += signedInUser.Fullname;

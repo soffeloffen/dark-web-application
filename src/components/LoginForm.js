@@ -10,6 +10,7 @@ export const LoginForm = () => {
   const [Email, setEmail] = useState("");
   const {signedInUser, setSignedInUser} = useContext(UserContext);
 
+  //CREATE BASKET ON CUSTOMERID
   const createBasket = (customerId) => {
     axios.post("http://localhost:3000/baskets", customerId).then((response) => {
       //Wait for the API to respond - statuscode should be 201 if everything went well
