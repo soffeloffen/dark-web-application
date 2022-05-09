@@ -1,6 +1,5 @@
 import {useParams} from "react-router-dom"
 import ButtonAddToBasket from './ButtonAddToBasket'
-import ButtonRemoveFromBasket from './ButtonRemoveFromBasket'
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
