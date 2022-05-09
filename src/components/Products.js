@@ -28,7 +28,8 @@ const Products = () => {
         console.log(data)
         return data.products
     }
-  /* END  GET ALL PRODUCTS    */ 
+  
+    /* END  GET ALL PRODUCTS    */ 
 
   ///USEEFFECT CONTAINER
   useEffect(() => {

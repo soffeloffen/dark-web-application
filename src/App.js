@@ -11,8 +11,6 @@ import "./product.css";
 // import { Router } from "express";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
-
-
 const App = () => {
 
   const [products, setProducts] = useState([]);

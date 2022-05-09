@@ -25,8 +25,8 @@ const ProductsOnSale = () => {
         console.log(data)
         return data.products
     }
+    
   /* END  GET ALL PRODUCTS    */ 
-
   const { signedInUser, setSignedInUser } = useContext(UserContext);
   const products = allProducts.map((product) => {
     //A div to show title and image - with link to product detail page for that prod id
