@@ -33,9 +33,8 @@ const fetchProduct = async () => {
             <button><Link to="/products">Go Back To All Products</Link></button>
             <h2>{product.title}</h2>
             <img  className='image2'  src={"/"+product.image}/>
-            <p>Price: {product.price}</p>
-            <ButtonAddToBasket product = {product} />  
-            {/* <ButtonRemoveFromBasket prodid = {product.id} /> */}
+            <h4>Price: {product.price} $ {product.currency} - {product.quantity} {product.measurement} </h4>
+             <ButtonAddToBasket product = {product} /> 
             <p>{product.longdescription}</p>
         </div>
     )

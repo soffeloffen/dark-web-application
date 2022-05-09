@@ -85,8 +85,7 @@ const totalProductsMessage = (totalProductsInBasket) => {
     return <h2>There are no products in the basket. <br></br>Products can be added from the 'Dark products' tab in the menu</h2>
   }
   else {
-    return <h2>Total products in basket: {totalProductsInBasket} <br></br>
-            Total Price:{} </h2>
+    return <h2>Total products in basket: {totalProductsInBasket} </h2>
 
   }
 }
