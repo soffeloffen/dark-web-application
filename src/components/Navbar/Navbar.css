@@ -1,5 +1,5 @@
 .NavbarItems {
-    background-color: grey;
+    background-color: rgb(66, 66, 66);
     height: 80px;
     display: flex;
     justify-content: center;
@@ -8,7 +8,7 @@
 }
 
 .Navbarlogo {
-    color: black;
+    color: white;
     justify-self: start;
     margin-left: 20px;
     cursor: pointer;
@@ -35,7 +35,7 @@
 }
 
 .nav-links {
-    color: black;
+    color: white;
     text-decoration: none;
     padding: 0.5rem 1rem;
 }

@@ -31,7 +31,7 @@ class Navbar extends React.Component {
     return (
       <nav className="NavbarItems">
         <h1 className="Navbarlogo">Dark Web</h1>
-        <img  className='img'  src={"/images/hacker.png"}/>
+        <img  className='img' src={"/images/hacker.png"}/>
         <ul className="nav-menu">
           {MenuItems.map((item, index) => {
             return (

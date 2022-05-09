@@ -59,7 +59,7 @@ const Products = () => {
   const Alltypes = types.map((type) => {
     return (
       <div key={type}>
-        <button key={type} onClick={() => getProducts(type)}>
+        <button class="button" key={type} onClick={() => getProducts(type)}>
           <p>{type}s</p>
         </button>
       </div>
@@ -98,8 +98,9 @@ const Products = () => {
       <h1>Products Page</h1>
       <h4>Filter by categories</h4>
       <div id="main">
-        {Alltypes}
-        <button onClick={() => setProducts(allProducts)}>remove filter</button>
+        <div className="filters">{Alltypes} <div className="filters2"><button className="button" onClick={() => setProducts(allProducts)}>remove filters</button> </div> </div>  
+       <br></br>
+         
       </div>
         <div className="collection" >{AllProducts}</div>
 
