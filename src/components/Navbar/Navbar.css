@@ -50,6 +50,16 @@
     color: white;
 }
 
+
+.img{
+    max-width: 40px;
+    max-height: 20px;
+    align-items: center;
+    width: 60%;
+    height: auto;
+  }
+  
+
 @media screen and (max-width: 960px) {
     .NavbarItems {
         position:relative;
