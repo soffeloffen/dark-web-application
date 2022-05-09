@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import "./style.css";
+import "./prodstyle.css";
 
 //take the products array from App.js and convert to lsit of products
 const Products = () => {
