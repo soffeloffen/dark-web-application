@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./style.css";
-import React, { Fragment } from "react";
 
 //take the products array from App.js and convert to lsit of products
 const Products = () => {
@@ -54,6 +53,16 @@ const Products = () => {
   });
   ///USEEFFECT CONTAINER/////
 
+  //GET PRODUCT BY TYPEID
+  function getProducts(type) {
+    fetch("http://localhost:3000/products/types/" + type).then((response) => {
+      response.json().then((data) => {
+        setProducts(data);
+      });
+    });
+  }
+  //GET PRODUCT BY TYPEID
+
 
   ///TYPES CONTAINER
   const Alltypes = types.map((type) => {
@@ -87,12 +96,11 @@ const Products = () => {
     );
   });
   //ALL PRODUCTS CONTAINER
+
   //RETURN CONTAINER
   //1.RETURNS BUTTONS FOR ALL TYPES
   //2.RETURNS BUTTON FOR REMOVE FILTER -> setProducts to allproducts
   //3.RETURN ALL PRODUCTS (DEFAULT)
-
-
   return (
     <>
       <h1>Products Page</h1>
@@ -107,15 +115,7 @@ const Products = () => {
     </>
   );
 
-  //GET PRODUCT BY TYPEID
-  function getProducts(type) {
-    fetch("http://localhost:3000/products/types/" + type).then((response) => {
-      response.json().then((data) => {
-        setProducts(data);
-      });
-    });
-  }
-  //GET PRODUCT BY TYPEID
+
 };
 
 
