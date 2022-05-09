@@ -16,12 +16,11 @@
     display: block;
     min-height: 200px;
     width: 100%;
+    height: auto;
   }
   
   
-  .prod__price {
-
-
+.prod__price {
       font-family: sans-serif;
       font-size: 14px;
 
