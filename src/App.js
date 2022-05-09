@@ -18,24 +18,6 @@ const App = () => {
   const [products, setProducts] = useState([]);
   const [signedInUser, setSignedInUser] = useState(undefined);
 
-
-  /*   GET ALL PRODUCTS   
-    useEffect(() => {
-        const getProducts = async () => {
-            const productsFromServer = await fetchProducts()
-            setProducts(productsFromServer)
-        }
-        getProducts()
-    }, [])
-
-    //fetch products
-    const fetchProducts = async () => {
-        const res = await fetch('http://localhost:3000/products')
-        const data = await res.json()
-        return data.products
-    } */
-
-
   return (
     <div className="App">
       <Router>
