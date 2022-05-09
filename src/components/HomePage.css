@@ -1,15 +1,40 @@
 .products {
-    display: flex;
+    display: grid;
     flex-wrap: wrap;
-    margin-left: 250px;
-    margin-top: 80px;
-    grid-gap: 20px
+    grid-auto-columns: max-content;
+    grid-auto-flow: dense;
+    margin-top: 10px;
+    grid-gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 60px auto;
+    max-width: 800px;
+
+}
+
+.collection {
+    display: grid;
+    grid-auto-columns: max-content;
+    grid-auto-flow: dense;
+    grid-auto-rows: minmax(100px, auto);
+    grid-gap: 25px;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 60px auto;
+    max-width: 800px;
+  }
+  
+
+.img{
+    max-width: 160px;
+    max-height: 200px;
+    align-items: center;
+    width: 80%;
+    height: auto;
 }
 
 .title {
-    margin-top: 50px;
+    margin-top: 10px;
 }
 
 .caption {
-    margin-top: 20px;
+    margin-top:20px;
 }

@@ -31,11 +31,11 @@ const ProductsOnSale = () => {
   const products = allProducts.map((product) => {
     //A div to show title and image - with link to product detail page for that prod id
     const ProdOnSaleDiv = (
-      <div>
+      <div >
         <h3>{product.title}</h3>
         <div>
           <Link to={`/products/${product.id}`}>
-            {<img className="image" src={product.image} />}
+            {<img className="img" src={product.image} />}
           </Link>
           <p>Price: {product.price}$ {product.currency}</p>
         </div>
@@ -63,7 +63,7 @@ const ProductsOnSale = () => {
     <>
       {welcomeGreeting()}
       <h3 className="caption">Products On Sale !!</h3>
-      <div className="products">{products}</div>
+      <div className="products" >{products}</div>
     </>
   );
 };

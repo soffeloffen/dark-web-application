@@ -17,6 +17,8 @@
     max-width: 200px;
     max-height: 200px;
     align-items: center;
+    width: 100%;
+    height: auto;
 }
 
 .cat{
@@ -25,14 +27,21 @@
     align-items: center;
 }
 
+
 .image2{
-    max-width: 400px;
-    max-height: 400px;
+  max-width: 400px;
+  max-height: 400px;
+  align-items: center;
+  width: 100%;
+  height: auto;
 }
+
 
 #main {
     display: flex;
     align-items: center;
+    width: 100%;
+    height: auto;
 
   }
   
