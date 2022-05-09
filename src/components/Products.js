@@ -98,7 +98,7 @@ const Products = () => {
       <h1>Products Page</h1>
       <h4>Filter by categories</h4>
       <div id="main">
-        <div className="filters">{Alltypes} <div className="filters2"><button className="button" onClick={() => setProducts(allProducts)}>remove filters</button> </div> </div>  
+        <div className="filters">{Alltypes} <div className="filters2"><button className="button" onClick={() => setProducts(allProducts)}>Remove Filters</button> </div> </div>  
        <br></br>
          
       </div>
