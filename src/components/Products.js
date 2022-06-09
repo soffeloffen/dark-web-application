@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import ButtonAddToBasket from './ButtonAddToBasket'
 import "./prodstyle.css";
 
 //take the products array from App.js and convert to lsit of products
@@ -90,6 +91,7 @@ const Products = () => {
                  <div className="prod__price">
                 <h3>{product.title}</h3>
                  <p>{product.shortdescription}</p>
+                 <ButtonAddToBasket product = {product} /> 
                  </div>
             </div>
             </div>
